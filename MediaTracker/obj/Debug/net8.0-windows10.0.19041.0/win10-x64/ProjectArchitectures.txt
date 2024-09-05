@@ -1,0 +1,1 @@
+C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\MediaTracker.csproj;x64
