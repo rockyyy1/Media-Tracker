@@ -29,13 +29,13 @@
     <AppXManifest Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-09-05T16:04:54.358</Modified>
+      <Modified>2024-09-05T19:06:07.971</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-09-05T15:58:58.670</Modified>
+      <Modified>2024-09-05T19:06:07.329</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MediaTracker.runtimeconfig.json">
       <PackagePath>MediaTracker.runtimeconfig.json</PackagePath>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MediaTracker.dll">
       <PackagePath>MediaTracker.dll</PackagePath>
-      <Modified>2024-09-05T16:04:53.535</Modified>
+      <Modified>2024-09-05T19:06:06.615</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>MediaTracker.exe</PackagePath>
-      <Modified>2024-09-05T16:04:53.587</Modified>
+      <Modified>2024-09-05T19:06:06.662</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
@@ -295,7 +295,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MediaTracker.deps.json">
       <PackagePath>MediaTracker.deps.json</PackagePath>
-      <Modified>2024-09-05T15:58:56.728</Modified>
+      <Modified>2024-09-05T17:12:31.809</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.31\lib\net6.0\Microsoft.Windows.SDK.NET.dll">
       <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>

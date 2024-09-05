@@ -1,8 +1,10 @@
 ﻿
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
+using static System.Net.WebRequestMethods;
 
 // start date : 05/09/2024
 namespace MediaTracker
@@ -11,6 +13,7 @@ namespace MediaTracker
     {
         string API_KEY = "&apikey=4210cd04";
         string film_search = "http://www.omdbapi.com/?t=";
+        string book_search = "https://openlibrary.org/search.json?title=";
 
         private Movie movieData;
         private TVShow tvData;
@@ -46,9 +49,6 @@ namespace MediaTracker
                             tvData = JsonConvert.DeserializeObject<TVShow>(responseString);
                             LoadSuggestion(tvData);
                             break;
-                        case "book":
-                            // Do later
-                            break;
                         default:
                             Debug.WriteLine("Invalid type");
                             break;
@@ -71,6 +71,83 @@ namespace MediaTracker
             }
         }
 
+        //API: https://openlibrary.org/dev/docs/api/search
+        async void ReadBookAPI(string websiteURL)
+        {
+            try
+            {
+                var client = new HttpClient();
+                var response = await client.GetAsync(websiteURL);
+
+                //http response is successfull
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    //Debug.WriteLine(responseString);
+
+                    BookResponse bookResponse = JsonConvert.DeserializeObject<BookResponse>(responseString);
+                    Book bookData = bookResponse.docs.FirstOrDefault();
+                    //LoadSuggestion()
+                    string title = bookData.Title;
+                    string author = bookData.author_name[0];
+                    int year_published = bookData.first_publish_year;
+                    int pages = bookData.number_of_pages_median;
+                    string bookCoverKey = bookData.cover_edition_key;
+
+                    string key = bookData.key;
+                    //Debug.WriteLine(key);
+                    var client_second = new HttpClient();
+                    string worksURL = "https://openlibrary.org" + key + ".json";
+                    Debug.WriteLine(worksURL);
+                    var response_second = await client_second.GetAsync(worksURL);
+                    var responseString_second = await response_second.Content.ReadAsStringAsync();
+                    //Debug.WriteLine(responseString_second);
+
+                    var settings = new JsonSerializerSettings();
+                    settings.Converters.Add(new DescriptionConverter());
+
+                    Book bookResponse_second = JsonConvert.DeserializeObject<Book>(responseString_second, settings);
+                    string plot = "N/A";
+
+                    if (bookResponse_second.description != null)
+                    {
+                        plot = bookResponse_second.description?.description ?? bookResponse_second.description?.value;
+                    }
+
+                    Debug.WriteLine(plot);
+                    bookData.Plot = plot;
+                    Debug.WriteLine(bookData.Plot);
+
+
+                    JSONresponse.Text =
+                    "Title: " + title + "\n" +
+                    "Author: " + author + "\n" +
+                    "Year Published: " + year_published + "\n" +
+                    "Pages: " + pages + "\n" +
+                    "Plot: " + plot + "\n";
+
+                    string bookCoverURL = "https://covers.openlibrary.org/b/olid/" + bookCoverKey + ".jpg";
+                    //Debug.WriteLine(bookCoverURL);
+                    posterImage.Source = ImageSource.FromUri(new Uri(bookCoverURL));
+
+                }
+
+                else
+                {
+                    await DisplayAlert("Connection Error", "Check API Address\n" + websiteURL, "Ok");
+                    Debug.WriteLine($"Error - check API address");
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                Debug.WriteLine($"Network error: {ex.Message}");
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Unexpected error: {ex.Message}");
+            }
+        }
         //Display Movie suggestion
         private void LoadSuggestion(Movie movieData)
         {
@@ -146,6 +223,9 @@ namespace MediaTracker
                     break;
                 case "Book":
                     //Debug.WriteLine("Issa book!");
+                    string bookTitle = titleEntry.Text;
+                    string bookRequest = book_search + bookTitle;
+                    ReadBookAPI(bookRequest);
                     break;
                 default:
                     Debug.WriteLine("No media type selected");
