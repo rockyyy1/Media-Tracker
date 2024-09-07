@@ -59,7 +59,8 @@
             <Button x:Name="SearchBtn" Clicked="SearchBtn_Clicked" Text="Search" FontSize="Medium" FontAttributes="Bold" WidthRequest="500" BackgroundColor="MediumSpringGreen"></Button>
             <Label></Label>
             <!-- Text -->
-            <Label x:Name="JSONresponse" WidthRequest="500"></Label>
+            <Label x:Name="JSONresponse" WidthRequest="500" ></Label>
+            <Label x:Name="descriptionSummary" WidthRequest="500" TextType="Html" ></Label>
             <!-- Image -->
             <Image x:Name="posterImage" WidthRequest="250"></Image>
             <Label></Label>
@@ -67,6 +68,8 @@
             <Label x:Name="availabilityLbl" HorizontalOptions="Center" FontSize="Large" TextColor="Green"></Label>
             <Label x:Name="dateOfReleaseLbl" HorizontalOptions="Center" FontSize="Medium" TextColor="Purple"></Label>
             <Label x:Name="countdownLbl" HorizontalOptions="Center" FontSize="Medium" TextColor="Red"></Label>
+            <!-- select status-->
+            <StackLayout x:Name="statusStackLayout"></StackLayout>
             <!-- Select -->
             <Button x:Name="TrackThisBtn" Clicked="TrackThisBtn_Clicked" Text="Track this!" FontSize="Medium" FontAttributes="Bold" WidthRequest="500" IsVisible="False"></Button>
             <Label></Label>

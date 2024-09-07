@@ -180,3 +180,6 @@ C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-wind
 C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\tv.scale-100.png
 C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\MediaTracker.sourcelink.json
 C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\episodes.scale-100.png
+C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\bookmark.scale-100.png
+C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\checkmark.scale-100.png
+C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\eye.scale-100.png

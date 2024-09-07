@@ -29,13 +29,13 @@
     <AppXManifest Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-09-06T18:12:31.813</Modified>
+      <Modified>2024-09-07T06:58:24.334</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-09-06T18:06:56.336</Modified>
+      <Modified>2024-09-07T06:58:23.623</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MediaTracker.runtimeconfig.json">
       <PackagePath>MediaTracker.runtimeconfig.json</PackagePath>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MediaTracker.dll">
       <PackagePath>MediaTracker.dll</PackagePath>
-      <Modified>2024-09-06T18:12:30.995</Modified>
+      <Modified>2024-09-07T06:58:22.825</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>MediaTracker.exe</PackagePath>
-      <Modified>2024-09-06T18:12:31.045</Modified>
+      <Modified>2024-09-07T06:58:22.883</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
@@ -269,29 +269,41 @@
       <PackagePath>book.scale-100.png</PackagePath>
       <Modified>2024-09-05T11:20:17.769</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\bookmark.scale-100.png">
+      <PackagePath>bookmark.scale-100.png</PackagePath>
+      <Modified>2024-09-07T05:28:24.384</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\checkmark.scale-100.png">
+      <PackagePath>checkmark.scale-100.png</PackagePath>
+      <Modified>2024-09-07T05:28:43.669</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
       <PackagePath>dotnet_bot.scale-100.png</PackagePath>
-      <Modified>2024-09-06T17:27:41.429</Modified>
+      <Modified>2024-09-07T05:44:35.515</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
       <PackagePath>dotnet_bot.scale-125.png</PackagePath>
-      <Modified>2024-09-06T17:27:41.446</Modified>
+      <Modified>2024-09-07T05:44:35.544</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
       <PackagePath>dotnet_bot.scale-150.png</PackagePath>
-      <Modified>2024-09-06T17:27:41.465</Modified>
+      <Modified>2024-09-07T05:44:35.562</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
       <PackagePath>dotnet_bot.scale-200.png</PackagePath>
-      <Modified>2024-09-06T17:27:41.497</Modified>
+      <Modified>2024-09-07T05:44:35.596</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
       <PackagePath>dotnet_bot.scale-400.png</PackagePath>
-      <Modified>2024-09-06T17:27:41.605</Modified>
+      <Modified>2024-09-07T05:44:35.691</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\episodes.scale-100.png">
       <PackagePath>episodes.scale-100.png</PackagePath>
       <Modified>2024-09-06T17:26:04.821</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\eye.scale-100.png">
+      <PackagePath>eye.scale-100.png</PackagePath>
+      <Modified>2024-09-07T05:44:05.215</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\tv.scale-100.png">
       <PackagePath>tv.scale-100.png</PackagePath>
@@ -299,7 +311,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MediaTracker.deps.json">
       <PackagePath>MediaTracker.deps.json</PackagePath>
-      <Modified>2024-09-06T17:37:58.141</Modified>
+      <Modified>2024-09-07T05:48:49.328</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.31\lib\net6.0\Microsoft.Windows.SDK.NET.dll">
       <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>

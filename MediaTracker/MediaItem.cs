@@ -4,6 +4,7 @@ using System;
 
 public enum UserStatusEnum
 {
+    ON_WATCHLIST,
     CURRENTLY_VIEWING,
     COMPLETED
 }
@@ -22,7 +23,6 @@ public class MediaItem
 }
 public class Movie : MediaItem
 {
-    public string Title { get; set; }
     public string Year { get; set; }
     public string Rated { get; set; }
     public string Released { get; set; }
@@ -31,7 +31,6 @@ public class Movie : MediaItem
     public string Director { get; set; }
     public string Writer { get; set; }
     public string Actors { get; set; }
-    public string Plot { get; set; }
     public string Country { get; set; }
     public string Awards { get; set; }
     public string Poster { get; set; }
