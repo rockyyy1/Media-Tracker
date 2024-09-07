@@ -58,6 +58,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\book.png" />
+	  <None Remove="Resources\Images\episodes.png" />
 	  <None Remove="Resources\Images\tv.png" />
 	</ItemGroup>
 

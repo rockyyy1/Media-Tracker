@@ -7,9 +7,10 @@
         <VerticalStackLayout>
             <!-- Radio Buttons -->
             <StackLayout>
-                <Label Text="Select Media Type" />
+                <Label Text="Select Media Type" HorizontalOptions="Center" FontSize="Medium"/>
+                <Label></Label>
                 <StackLayout x:Name="MediaTypeStackLayout" RadioButtonGroup.GroupName="MediaTypes"
-                 Orientation="Horizontal">
+                 Orientation="Horizontal" HorizontalOptions="Center">
                     <RadioButton Value="Movie">
                         <RadioButton.Content>
                             <StackLayout>
@@ -26,7 +27,7 @@
                     <RadioButton Value="TVShow">
                         <RadioButton.Content>
                             <StackLayout>
-                                <Image Source="tv.png"
+                                <Image Source="episodes.png"
                                        HeightRequest="30"
                            HorizontalOptions="Center"
                            VerticalOptions="Center" />
@@ -51,14 +52,24 @@
                     </RadioButton>
                 </StackLayout>
             </StackLayout>
-
-            <Entry Placeholder="title" x:Name="titleEntry"></Entry>
-            <Button x:Name="SearchBtn" Clicked="SearchBtn_Clicked" Text="Search"></Button>
-            <Label x:Name="JSONresponse">Hi</Label>
-
+            <Label></Label>
+            <!-- Entry -->
+            <Entry Placeholder="Search by Title" x:Name="titleEntry" HorizontalTextAlignment="Center" HorizontalOptions="Center" WidthRequest="500"></Entry>
+            <!-- Search Button -->
+            <Button x:Name="SearchBtn" Clicked="SearchBtn_Clicked" Text="Search" FontSize="Medium" FontAttributes="Bold" WidthRequest="500" BackgroundColor="MediumSpringGreen"></Button>
+            <Label></Label>
+            <!-- Text -->
+            <Label x:Name="JSONresponse" WidthRequest="500"></Label>
             <!-- Image -->
-            <Image x:Name="posterImage" WidthRequest="200">
-            </Image>
+            <Image x:Name="posterImage" WidthRequest="250"></Image>
+            <Label></Label>
+            <!-- Availibility status-->
+            <Label x:Name="availabilityLbl" HorizontalOptions="Center" FontSize="Large" TextColor="Green"></Label>
+            <Label x:Name="dateOfReleaseLbl" HorizontalOptions="Center" FontSize="Medium" TextColor="Purple"></Label>
+            <Label x:Name="countdownLbl" HorizontalOptions="Center" FontSize="Medium" TextColor="Red"></Label>
+            <!-- Select -->
+            <Button x:Name="TrackThisBtn" Clicked="TrackThisBtn_Clicked" Text="Track this!" FontSize="Medium" FontAttributes="Bold" WidthRequest="500" IsVisible="False"></Button>
+            <Label></Label>
         </VerticalStackLayout>
     </ScrollView>
 
