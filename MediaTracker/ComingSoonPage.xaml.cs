@@ -1,18 +1,18 @@
 namespace MediaTracker;
 
-public partial class CompletedPage : ContentPage
+public partial class ComingSoonPage : ContentPage
 {
-	public CompletedPage()
+    public ComingSoonPage()
 	{
-        InitializeComponent();
+		InitializeComponent();
         MovieList.ItemsSource = LibraryPage.Instance.movieList
-            .Where(m => m.UserStatus == UserStatusEnum.COMPLETED);
+            .Where(m => m.Availability == AvailabilityStatusEnum.COMING_SOON);
 
         TVShowList.ItemsSource = LibraryPage.Instance.tvShowList
-            .Where(m => m.UserStatus == UserStatusEnum.COMPLETED);
+            .Where(m => m.Availability == AvailabilityStatusEnum.COMING_SOON);
 
         BookList.ItemsSource = LibraryPage.Instance.bookList
-            .Where(m => m.UserStatus == UserStatusEnum.COMPLETED);
+            .Where(m => m.Availability == AvailabilityStatusEnum.COMING_SOON);
 
         LibraryPage.Instance.LibraryUpdated += OnLibraryUpdated;
 
@@ -20,9 +20,9 @@ public partial class CompletedPage : ContentPage
     private void OnLibraryUpdated(object sender, EventArgs e)
     {
         // Update list views with latest filtered data
-        MovieList.ItemsSource = LibraryPage.Instance.movieList.Where(m => m.UserStatus == UserStatusEnum.COMPLETED);
-        TVShowList.ItemsSource = LibraryPage.Instance.tvShowList.Where(m => m.UserStatus == UserStatusEnum.COMPLETED);
-        BookList.ItemsSource = LibraryPage.Instance.bookList.Where(m => m.UserStatus == UserStatusEnum.COMPLETED);
+        MovieList.ItemsSource = LibraryPage.Instance.movieList.Where(m => m.Availability == AvailabilityStatusEnum.COMING_SOON);
+        TVShowList.ItemsSource = LibraryPage.Instance.tvShowList.Where(m => m.Availability == AvailabilityStatusEnum.COMING_SOON);
+        BookList.ItemsSource = LibraryPage.Instance.bookList.Where(m => m.Availability == AvailabilityStatusEnum.COMING_SOON);
     }
     private void ToggleMovieListVisibility(object sender, EventArgs e)
     {

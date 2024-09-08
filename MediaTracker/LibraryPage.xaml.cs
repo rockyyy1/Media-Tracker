@@ -6,9 +6,10 @@ public partial class LibraryPage : ContentPage
 {
     public static LibraryPage? Instance { get; private set; }
     public static List<MediaItem>? Library { get; set; }
-    public List<Movie> movieList;
-    public List<TVShow> tvShowList;
-    public List<Book> bookList;
+    public List<Movie> movieList { get; set; } = new List<Movie>();
+    public List<TVShow> tvShowList { get; set; } = new List<TVShow>();
+    public List<Book> bookList { get; set; } = new List<Book>();
+    public event EventHandler LibraryUpdated;
 
     public LibraryPage()
     {
@@ -26,6 +27,8 @@ public partial class LibraryPage : ContentPage
         MovieList.ItemsSource = movieList;
         TVShowList.ItemsSource = tvShowList;
         BookList.ItemsSource = bookList;
+        LibraryUpdated?.Invoke(this, EventArgs.Empty);
+
     }
 
     private void ToggleMovieListVisibility(object sender, EventArgs e)

@@ -29,11 +29,15 @@
         </Tab>
         <Tab
             Title="Available Now">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent 
+                Route="AvailableNowPage"
+                ContentTemplate="{DataTemplate local:AvailableNowPage}" />
         </Tab>
         <Tab
             Title="Coming Soon">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent 
+                Route="ComingSoonPage"
+                ContentTemplate="{DataTemplate local:ComingSoonPage}" />
         </Tab>
         <Tab
             Title="Completed">

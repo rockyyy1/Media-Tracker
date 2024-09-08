@@ -25,7 +25,6 @@ namespace MediaTracker
         public Book volData;
         private RadioButton _selectedRadioButton;
 
-
         public MainPage()
         {
             InitializeComponent();
@@ -343,7 +342,7 @@ namespace MediaTracker
             string year_published = volData.publishedDate;
             string formattedReleaseDate;
 
-            //sometimes json will give 2020-01-01 or just 2020, very inconsistent and frustrating!
+            //sometimes json will give 'murica format 2020-01-25 or just 2020, very inconsistent and frustrating!
             string[] formats = { "yyyy-MM-dd", "yyyy" };
             if (DateTime.TryParseExact(year_published, formats, null, System.Globalization.DateTimeStyles.None, out DateTime releaseDate))
             {
@@ -353,7 +352,7 @@ namespace MediaTracker
                 }
                 else  //full date
                 {
-                    formattedReleaseDate = releaseDate.ToString("d");
+                    formattedReleaseDate = releaseDate.ToString("dd/MM/yyyy");
                 }
             }
             else
@@ -387,12 +386,11 @@ namespace MediaTracker
             {
                 posterImage.Source = null;
             }
-
-            volData.Availability = CheckAvailability(releaseDate);
+            DateTime d = DateTime.ParseExact(formattedReleaseDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            volData.Availability = CheckAvailability(d);
+            //Debug.WriteLine("checking availibiliity in load suggestion" + volData.Availability);
             volData.Title = title;
             volData.Plot = description;
-
-            volData.Availability = CheckAvailability(releaseDate);
             CreateStatusCheckStackLayout(volData.Availability, "book");
         }
         //Search button
@@ -466,21 +464,20 @@ namespace MediaTracker
         {
             AvailabilityStatusEnum status;
 
-            if (releaseDate <= DateTime.Today)
+            if ((releaseDate - DateTime.Now).Days < 0)
             {
-                status = AvailabilityStatusEnum.AVAILABLE_NOW;
                 availabilityLbl.Text = "~ Available Now! ~";
                 dateOfReleaseLbl.Text = "";
                 countdownLbl.Text = "";
+                status = AvailabilityStatusEnum.AVAILABLE_NOW;
             }
             else
             {
-                status = AvailabilityStatusEnum.COMING_SOON;
                 availabilityLbl.Text = "~ Coming Soon! ~";
                 dateOfReleaseLbl.Text = "Release Date: " + releaseDate.ToString("d");
                 countdownLbl.Text = "Days until: " + (releaseDate - DateTime.Now).Days.ToString();
+                status = AvailabilityStatusEnum.COMING_SOON;
             }
-
             TrackThisBtn.IsVisible = true;
 
             return status;
@@ -532,6 +529,7 @@ namespace MediaTracker
                         Title = movieData.Title,
                         Plot = movieData.Plot,
                         Type = "Movie",
+                        Date = DateTime.Now,
                         Availability = movieData.Availability,
                         UserStatus = GetSelectedUserStatus(),
                         Year = movieData.Year,
@@ -554,6 +552,8 @@ namespace MediaTracker
                     {
                         LibraryPage.Library.Add(NewMovie);
                     }
+                    LibraryPage.Instance.RefreshListDisplay();
+
                     break;
                 case "TVShow":
                     TVShow newTVShow = new TVShow
@@ -561,6 +561,7 @@ namespace MediaTracker
                         Title = tvData.Title,
                         Plot = tvData.Plot,
                         Type = "TVShow",
+                        Date = DateTime.Now,
                         Availability = tvData.Availability,
                         UserStatus = GetSelectedUserStatus(),
                         Year = tvData.Year,
@@ -579,38 +580,77 @@ namespace MediaTracker
                     if (!LibraryPage.Library.Any(m => m.Title == newTVShow.Title && m.Type == newTVShow.Type))
                     {
                         LibraryPage.Library.Add(newTVShow);
+                        LibraryPage.Instance.RefreshListDisplay();
+
                     }
                     break;
                 case "Book":
+                    string publishedDate = volData.volumeInfo.publishedDate;
+                    string formattedDate;
+                    if (DateTime.TryParseExact(publishedDate, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
+                    {
+                        formattedDate = parsedDate.ToString("dd/MM/yyyy");
+                    }
+                    else
+                    {
+                        formattedDate = "N/A";
+                    }
+                    string formattedReleaseDate;
+
+                    //sometimes json will give 'murica format 2020-01-25 or just 2020, very inconsistent and frustrating!
+                    string[] formats = { "yyyy-MM-dd", "yyyy" };
+                    if (DateTime.TryParseExact(volData.volumeInfo.publishedDate, formats, null, System.Globalization.DateTimeStyles.None, out DateTime releaseDate))
+                    {
+                        if (volData.volumeInfo.publishedDate.Length == 4)  //json just has the year
+                        {
+                            formattedReleaseDate = releaseDate.ToString("yyyy");
+                        }
+                        else  //full date
+                        {
+                            formattedReleaseDate = releaseDate.ToString("dd/MM/yyyy");
+                        }
+                    }
+                    else
+                    {
+                        Debug.WriteLine("could not parse publication date");
+                        formattedReleaseDate = "N/A";
+                    }
+                    DateTime d = DateTime.ParseExact(formattedReleaseDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    volData.Availability = CheckAvailability(d);
+                    
                     Book newBook = new Book
                     {
                         Title = volData.volumeInfo.title,
                         Plot = volData.volumeInfo.description,
                         Type = "Book",
+                        Date = DateTime.Now,
                         Availability = volData.Availability,
                         UserStatus = GetSelectedUserStatus(),
-                        volumeInfo = new Volumeinfo
+                        DaysUntilRelease = (d - DateTime.Now).Days.ToString(),
+                        volumeInfo = new Volumeinfo 
                         {
                             title = volData.volumeInfo.title,
                             authors = volData.volumeInfo.authors,
                             publisher = volData.volumeInfo.publisher,
-                            publishedDate = volData.volumeInfo.publishedDate,
+                            publishedDate = formattedDate,
                             description = volData.volumeInfo.description,
                             pageCount = volData.volumeInfo.pageCount,
                             categories = volData.volumeInfo.categories,
                             imageLinks = volData.volumeInfo.imageLinks
                         }
                     };
+                    Debug.WriteLine("Created Book:" + newBook.volumeInfo.DaysUntilRelease);
                     if (!LibraryPage.Library.Any(m => m.Title == newBook.Title && m.Type == newBook.Type))
                     {
                         LibraryPage.Library.Add(newBook);
+                        LibraryPage.Instance.RefreshListDisplay();
+
                     }
                     break;
                 default:
                     Debug.WriteLine("No media type selected");
                     break;
             }
-            LibraryPage.Instance.RefreshListDisplay();
         }
 
         private void testbtn_Clicked(object sender, EventArgs e)

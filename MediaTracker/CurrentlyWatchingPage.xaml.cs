@@ -13,9 +13,18 @@ public partial class CurrentlyWatchingPage : ContentPage
 
         BookList.ItemsSource = LibraryPage.Instance.bookList
             .Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING);
-    }
 
-     private void ToggleMovieListVisibility(object sender, EventArgs e)
+        LibraryPage.Instance.LibraryUpdated += OnLibraryUpdated;
+
+    }
+    private void OnLibraryUpdated(object sender, EventArgs e)
+    {
+        // Update list views with latest filtered data
+        MovieList.ItemsSource = LibraryPage.Instance.movieList.Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING);
+        TVShowList.ItemsSource = LibraryPage.Instance.tvShowList.Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING);
+        BookList.ItemsSource = LibraryPage.Instance.bookList.Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING);
+    }
+    private void ToggleMovieListVisibility(object sender, EventArgs e)
     {
         MovieList.IsVisible = !MovieList.IsVisible;
         MovieTapImage.Source = MovieList.IsVisible ? "show.png" : "hide.png";

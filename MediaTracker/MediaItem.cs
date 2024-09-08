@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Globalization;
 
 public enum UserStatusEnum
 {
@@ -18,6 +19,7 @@ public class MediaItem
     public string Title { get; set; }
     public string Plot { get; set; }
     public string Type { get; set; }
+    public DateTime Date { get; set; }
     public UserStatusEnum UserStatus { get; set; }
     public AvailabilityStatusEnum Availability { get; set; }
 }
@@ -26,6 +28,7 @@ public class Movie : MediaItem
     public string Year { get; set; }
     public string Rated { get; set; }
     public string Released { get; set; }
+    public string DaysUntilRelease => DateTime.Parse(Released).Subtract(DateTime.Now).Days.ToString();
     public string Runtime { get; set; }
     public string Genre { get; set; }
     public string Director { get; set; }
@@ -43,6 +46,7 @@ public class TVShow : MediaItem
     public string Year { get; set; }
     public string Rated { get; set; }
     public string Released { get; set; }
+    public string DaysUntilRelease => DateTime.Parse(Released).Subtract(DateTime.Now).Days.ToString();
     public string Runtime { get; set; }
     public string Genre { get; set; }
     public string Director { get; set; }
@@ -59,6 +63,7 @@ public class TVShow : MediaItem
 public class Book : MediaItem
 {
     public int totalItems { get; set; }
+    public string DaysUntilRelease { get; set; }
     public Volumeinfo volumeInfo { get; set; }
     public items[] items { get; set; }
 }
