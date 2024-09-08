@@ -229,6 +229,12 @@
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\eye.scale-100.png">
       <PackagePath>eye.scale-100.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\hide.scale-100.png">
+      <PackagePath>hide.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\show.scale-100.png">
+      <PackagePath>show.scale-100.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\tv.scale-100.png">
       <PackagePath>tv.scale-100.png</PackagePath>
     </AppxPackagedFile>

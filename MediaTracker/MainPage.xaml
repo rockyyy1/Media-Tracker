@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MediaTracker.MainPage">
+             x:Class="MediaTracker.MainPage"
+             Title="Add New Item">
 
     <ScrollView>
         <VerticalStackLayout>
@@ -73,6 +74,8 @@
             <!-- Select -->
             <Button x:Name="TrackThisBtn" Clicked="TrackThisBtn_Clicked" Text="Track this!" FontSize="Medium" FontAttributes="Bold" WidthRequest="500" IsVisible="False"></Button>
             <Label></Label>
+            <Button x:Name="testbtn" Clicked="testbtn_Clicked" Text="TESTING" FontSize="Medium" FontAttributes="Bold" WidthRequest="500" BackgroundColor="Red"></Button>
+
         </VerticalStackLayout>
     </ScrollView>
 

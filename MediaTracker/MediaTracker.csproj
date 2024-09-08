@@ -62,6 +62,8 @@
 	  <None Remove="Resources\Images\checkmark.png" />
 	  <None Remove="Resources\Images\episodes.png" />
 	  <None Remove="Resources\Images\eye.png" />
+	  <None Remove="Resources\Images\hide.png" />
+	  <None Remove="Resources\Images\show.png" />
 	  <None Remove="Resources\Images\tv.png" />
 	</ItemGroup>
 
@@ -73,9 +75,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="CompletedPage.xaml.cs">
+	    <DependentUpon>CompletedPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="MainPage.xaml.cs">
 	    <DependentUpon>MainPage.xaml</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="CompletedPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="CurrentlyWatchingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="LibraryPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

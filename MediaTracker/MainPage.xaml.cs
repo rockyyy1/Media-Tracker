@@ -23,7 +23,7 @@ namespace MediaTracker
         public Movie movieData;
         public TVShow tvData;
         public Book volData;
-        public List<MediaItem> library = new List<MediaItem>();
+        private RadioButton _selectedRadioButton;
 
 
         public MainPage()
@@ -162,7 +162,8 @@ namespace MediaTracker
             // Create the first RadioButton for "Add to watchlist"
             var watchlistRadioButton = new RadioButton
             {
-                Value = "watchlist"
+                Value = "watchlist",
+                IsChecked = true
             };
 
             // Create a StackLayout for the watchlist RadioButton's content
@@ -281,8 +282,16 @@ namespace MediaTracker
             RadioButtonGroup.SetGroupName(statusCheckStackLayout, "CheckTypes");
 
             statusStackLayout.Children.Add(mainStackLayout);
+            _selectedRadioButton = watchlistRadioButton;
+            watchlistRadioButton.CheckedChanged += RadioButton_CheckedChanged;
+            watchingRadioButton.CheckedChanged += RadioButton_CheckedChanged;
+            completedRadioButton.CheckedChanged += RadioButton_CheckedChanged;
         }
-
+        //User status radio button check
+        private void RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            _selectedRadioButton = sender as RadioButton;
+        }
         //Display TVShow suggestion
         private void LoadSuggestion(TVShow showData)
         {
@@ -332,12 +341,11 @@ namespace MediaTracker
             string title = volData.title;
             string authors = string.Join(", ", volData.authors);
             string year_published = volData.publishedDate;
-            DateTime releaseDate;
-            string formattedReleaseDate = string.Empty;
+            string formattedReleaseDate;
 
             //sometimes json will give 2020-01-01 or just 2020, very inconsistent and frustrating!
             string[] formats = { "yyyy-MM-dd", "yyyy" };
-            if (DateTime.TryParseExact(year_published, formats, null, System.Globalization.DateTimeStyles.None, out releaseDate))
+            if (DateTime.TryParseExact(year_published, formats, null, System.Globalization.DateTimeStyles.None, out DateTime releaseDate))
             {
                 if (year_published.Length == 4)  //json just has the year
                 {
@@ -375,6 +383,10 @@ namespace MediaTracker
             {
                 posterImage.Source = ImageSource.FromUri(new Uri(bookCoverURL));
             }
+            else
+            {
+                posterImage.Source = null;
+            }
 
             volData.Availability = CheckAvailability(releaseDate);
             volData.Title = title;
@@ -386,6 +398,7 @@ namespace MediaTracker
         //Search button
         private void SearchBtn_Clicked(object sender, EventArgs e)
         {
+            descriptionSummary.Text = "";
             if (titleEntry.Text != "")
             {
                 string selectedMediaType = GetSelectedMediaType();
@@ -415,6 +428,7 @@ namespace MediaTracker
                         break;
                 }
             }
+            titleEntry.Text = "";
         }
 
         //Get Radio Button selection
@@ -428,6 +442,23 @@ namespace MediaTracker
                 }
             }
             return null;
+        }
+
+        // Get user status selection
+        private UserStatusEnum GetSelectedUserStatus()
+        {
+            switch (_selectedRadioButton.Value)
+            {
+                case "watchlist":
+                    return UserStatusEnum.WATCHLIST;
+                case "currently_watching":
+                    return UserStatusEnum.CURRENTLY_VIEWING;
+                case "completed":
+                    return UserStatusEnum.COMPLETED;
+                default:
+                    Debug.WriteLine("Unexpected RadioButton value");
+                    return UserStatusEnum.WATCHLIST;
+            }   
         }
 
         //Return if media is available or not
@@ -489,17 +520,20 @@ namespace MediaTracker
             return null;
         }
 
-        //Button to add to library
+        //Button to create the Media Item object and add to library
         private void TrackThisBtn_Clicked(object sender, EventArgs e)
         {
             string selectedMediaType = GetSelectedMediaType();
-
             switch (selectedMediaType)
             {
                 case "Movie":
                     Movie NewMovie = new Movie
                     {
                         Title = movieData.Title,
+                        Plot = movieData.Plot,
+                        Type = "Movie",
+                        Availability = movieData.Availability,
+                        UserStatus = GetSelectedUserStatus(),
                         Year = movieData.Year,
                         Rated = movieData.Rated,
                         Released = movieData.Released,
@@ -508,28 +542,80 @@ namespace MediaTracker
                         Director = movieData.Director,
                         Writer = movieData.Writer,
                         Actors = movieData.Actors,
-                        Plot = movieData.Plot,
                         Country = movieData.Country,
                         Awards = movieData.Awards,
                         Poster = movieData.Poster,
                         Metascore = movieData.Metascore,
                         imdbRating = movieData.imdbRating,
-                        BoxOffice = movieData.BoxOffice,
-                        Availability = movieData.Availability
+                        BoxOffice = movieData.BoxOffice
                     };
-                    Debug.WriteLine(NewMovie.Title);    
+                    //Debug.WriteLine(NewMovie.UserStatus);
+                    if (!LibraryPage.Library.Any(m => m.Title == NewMovie.Title && m.Type == NewMovie.Type))
+                    {
+                        LibraryPage.Library.Add(NewMovie);
+                    }
                     break;
                 case "TVShow":
-                    TVShow newTVShow = new TVShow();
+                    TVShow newTVShow = new TVShow
+                    {
+                        Title = tvData.Title,
+                        Plot = tvData.Plot,
+                        Type = "TVShow",
+                        Availability = tvData.Availability,
+                        UserStatus = GetSelectedUserStatus(),
+                        Year = tvData.Year,
+                        Rated = tvData.Rated,
+                        Released = tvData.Released,
+                        Genre = tvData.Genre,
+                        Director = tvData.Director,
+                        Writer = tvData.Writer,
+                        Actors = tvData.Actors,
+                        Country = tvData.Country,
+                        Awards = tvData.Awards,
+                        Poster = tvData.Poster,
+                        totalSeasons = tvData.totalSeasons
+                    };
+                    //Debug.WriteLine(newTVShow.UserStatus);
+                    if (!LibraryPage.Library.Any(m => m.Title == newTVShow.Title && m.Type == newTVShow.Type))
+                    {
+                        LibraryPage.Library.Add(newTVShow);
+                    }
                     break;
                 case "Book":
-                    Book newBook = new Book();
+                    Book newBook = new Book
+                    {
+                        Title = volData.volumeInfo.title,
+                        Plot = volData.volumeInfo.description,
+                        Type = "Book",
+                        Availability = volData.Availability,
+                        UserStatus = GetSelectedUserStatus(),
+                        volumeInfo = new Volumeinfo
+                        {
+                            title = volData.volumeInfo.title,
+                            authors = volData.volumeInfo.authors,
+                            publisher = volData.volumeInfo.publisher,
+                            publishedDate = volData.volumeInfo.publishedDate,
+                            description = volData.volumeInfo.description,
+                            pageCount = volData.volumeInfo.pageCount,
+                            categories = volData.volumeInfo.categories,
+                            imageLinks = volData.volumeInfo.imageLinks
+                        }
+                    };
+                    if (!LibraryPage.Library.Any(m => m.Title == newBook.Title && m.Type == newBook.Type))
+                    {
+                        LibraryPage.Library.Add(newBook);
+                    }
                     break;
                 default:
                     Debug.WriteLine("No media type selected");
                     break;
             }
+            LibraryPage.Instance.RefreshListDisplay();
+        }
+
+        private void testbtn_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
-
 }

@@ -13,12 +13,12 @@ namespace MediaTracker
         {
             return new Window(new AppShell())
             {
-                MinimumWidth = 600,
-                MaximumWidth = 600,
-                MinimumHeight = 900,
-                MaximumHeight = 900,
+                MinimumWidth = 760,
+                MaximumWidth = 760,
+                MinimumHeight = 1000,
+                MaximumHeight = 1000,
                 X = 100,
-                Y = 100
+                Y = 0
             };
         }
     }

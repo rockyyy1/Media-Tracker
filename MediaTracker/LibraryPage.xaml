@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MediaTracker"
+             x:Class="MediaTracker.LibraryPage"
+             Title="My Library">
+    <ScrollView>
+        <VerticalStackLayout>
+            <StackLayout Margin="20">
+                <Grid>
+                    <Frame BorderColor="Black" Padding="5">
+                        <Label Text="Movies" FontSize="18" FontAttributes="Bold">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ToggleMovieListVisibility"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Frame>
+                    <Image x:Name="MovieTapImage" Source="show.png" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0"/>
+                </Grid>
+                <StackLayout x:Name="MovieListContent">
+                    <ListView x:Name="MovieList" VerticalOptions="FillAndExpand" IsVisible="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image Source="{Binding Poster}" WidthRequest="80" HeightRequest="120"/>
+                                            <StackLayout Margin="20,0,0,0">
+                                                <Label Text="{Binding Title}" FontSize="16"/>
+                                                <Label Text="Plot:" FontSize="14" TextColor="Gray"/>
+                                                <Label Text="{Binding Plot, Converter={StaticResource MediaConverters}}" FontSize="14" LineBreakMode="WordWrap" MaxLines="2"/>
+                                                <Label Text="Status:" FontSize="14" TextColor="Gray"/>
+                                                <Label Text="{Binding UserStatus, Converter={StaticResource MediaConverters}}" FontSize="14"/>
+                                                <Label Text="Availability:" FontSize="14" TextColor="Gray"/>
+                                                <Label Text="{Binding Availability, Converter={StaticResource MediaConverters}}" FontSize="14" TextColor="{Binding Availability, Converter={StaticResource MediaConverters}}"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Margin="20">
+                        <Grid>
+                    <Frame BorderColor="Black" Padding="5">
+                        <Label Text="TV Shows" FontSize="18" FontAttributes="Bold">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ToggleTVShowListVisibility"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Frame>
+                    <Image x:Name="TVShowTapImage" Source="show.png" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0"/>
+                        </Grid>
+                        <StackLayout x:Name="TVShowListContent">
+                    <ListView x:Name="TVShowList" VerticalOptions="FillAndExpand" IsVisible="True">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Frame>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image Source="{Binding Poster}" WidthRequest="80" HeightRequest="120"/>
+                                                    <StackLayout Margin="20,0,0,0">
+                                                        <Label Text="{Binding Title}" FontSize="16"/>
+                                                        <Label Text="Plot:" FontSize="14" TextColor="Gray"/>
+                                                        <Label Text="{Binding Plot, Converter={StaticResource MediaConverters}}" FontSize="14" LineBreakMode="WordWrap" MaxLines="2"/>
+                                                        <Label Text="Status:" FontSize="14" TextColor="Gray"/>
+                                                        <Label Text="{Binding UserStatus, Converter={StaticResource MediaConverters}}" FontSize="14"/>
+                                                        <Label Text="Availability:" FontSize="14" TextColor="Gray"/>
+                                                        <Label Text="{Binding Availability, Converter={StaticResource MediaConverters}}" FontSize="14" TextColor="{Binding Availability, Converter={StaticResource MediaConverters}}"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </Frame>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </StackLayout>
+
+            <StackLayout Margin="20">
+                                <Grid>
+                    <Frame BorderColor="Black" Padding="5">
+
+                        <Label Text="Books" FontSize="18" FontAttributes="Bold">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ToggleBookListVisibility"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Frame>
+                    <Image x:Name="BookTapImage" Source="show.png" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0"/>
+                                </Grid>
+                                    <StackLayout x:Name="BookListContent">
+                    <ListView x:Name="BookList" VerticalOptions="FillAndExpand" IsVisible="True">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <Frame>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Image Source="{Binding volumeInfo.imageLinks.thumbnail}" WidthRequest="80" HeightRequest="120"/>
+                                                            <StackLayout Margin="20,0,0,0">
+                                                                <Label Text="{Binding Title}" FontSize="16"/>
+                                                                <Label Text="Plot:" FontSize="14" TextColor="Gray"/>
+                                                                <Label Text="{Binding Plot, Converter={StaticResource MediaConverters}}" FontSize="14" LineBreakMode="WordWrap" MaxLines="2"/>
+                                                                <Label Text="Status:" FontSize="14" TextColor="Gray"/>
+                                                                <Label Text="{Binding UserStatus, Converter={StaticResource MediaConverters}}" FontSize="14"/>
+                                                                <Label Text="Availability:" FontSize="14" TextColor="Gray"/>
+                                                                <Label Text="{Binding Availability, Converter={StaticResource MediaConverters}}" FontSize="14" TextColor="{Binding Availability, Converter={StaticResource MediaConverters}}"/>
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                    </Frame>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                            </StackLayout>
+                                
+        </VerticalStackLayout>
+    </ScrollView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:MediaConverters x:Key="MediaConverters"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

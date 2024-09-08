@@ -4,7 +4,7 @@ using System;
 
 public enum UserStatusEnum
 {
-    ON_WATCHLIST,
+    WATCHLIST, 
     CURRENTLY_VIEWING,
     COMPLETED
 }
@@ -38,8 +38,22 @@ public class Movie : MediaItem
     public string imdbRating { get; set; }
     public string BoxOffice { get; set; }
 }
-public class TVShow : Movie
+public class TVShow : MediaItem
 {
+    public string Year { get; set; }
+    public string Rated { get; set; }
+    public string Released { get; set; }
+    public string Runtime { get; set; }
+    public string Genre { get; set; }
+    public string Director { get; set; }
+    public string Writer { get; set; }
+    public string Actors { get; set; }
+    public string Country { get; set; }
+    public string Awards { get; set; }
+    public string Poster { get; set; }
+    public string Metascore { get; set; }
+    public string imdbRating { get; set; }
+    public string BoxOffice { get; set; }
     public string totalSeasons { get; set; }
 }
 public class Book : MediaItem

@@ -11,6 +11,17 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
+    <MauiXaml Update="CompletedPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="CurrentlyWatchingPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="LibraryPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+  </ItemGroup>
+  <ItemGroup>
     <None Update="App.xaml">
       <SubType>Designer</SubType>
     </None>
