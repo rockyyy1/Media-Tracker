@@ -105,7 +105,7 @@
                                                 <Label Text="Plot:" FontSize="14" TextColor="Gray"/>
                                                 <Label Text="{Binding Plot, Converter={StaticResource MediaConverters}}" FontSize="14" LineBreakMode="WordWrap" MaxLines="2"/>
                                                 <Label Text="Release Date:" FontSize="14" TextColor="Gray"/>
-                                                <Label Text="{Binding volumeInfo.publishedDate, StringFormat='{}{0:dd/MM/yyyy}'}" FontSize="14"/>
+                                                <Label Text="{Binding volumeInfo.publishedDate, StringFormat='{}{0:dd/M/yyyy}'}" FontSize="14"/>
                                                 <Label Text="Days until release:" FontSize="14" TextColor="Gray"/>
                                                 <Label Text="{Binding DaysUntilRelease}" FontSize="14"/>
                                             </StackLayout>

@@ -12,65 +12,65 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MediaTracker
-build_property.ProjectDir = C:\Users\Rocky\Documents\GitHub\Media-Tracker\MediaTracker\
+build_property.ProjectDir = C:\Users\trangr\Documents\GitHub\Media-Tracker\MediaTracker\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 
-[C:/Users/Rocky/Documents/GitHub/Media-Tracker/MediaTracker/App.xaml]
+[C:/Users/trangr/Documents/GitHub/Media-Tracker/MediaTracker/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MediaTracker.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[C:/Users/Rocky/Documents/GitHub/Media-Tracker/MediaTracker/AppShell.xaml]
+[C:/Users/trangr/Documents/GitHub/Media-Tracker/MediaTracker/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MediaTracker.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[C:/Users/Rocky/Documents/GitHub/Media-Tracker/MediaTracker/AvailableNowPage.xaml]
+[C:/Users/trangr/Documents/GitHub/Media-Tracker/MediaTracker/AvailableNowPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MediaTracker.AvailableNowPage.xaml
 build_metadata.AdditionalFiles.TargetPath = AvailableNowPage.xaml
 build_metadata.AdditionalFiles.RelativePath = AvailableNowPage.xaml
 
-[C:/Users/Rocky/Documents/GitHub/Media-Tracker/MediaTracker/ComingSoonPage.xaml]
+[C:/Users/trangr/Documents/GitHub/Media-Tracker/MediaTracker/ComingSoonPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MediaTracker.ComingSoonPage.xaml
 build_metadata.AdditionalFiles.TargetPath = ComingSoonPage.xaml
 build_metadata.AdditionalFiles.RelativePath = ComingSoonPage.xaml
 
-[C:/Users/Rocky/Documents/GitHub/Media-Tracker/MediaTracker/CompletedPage.xaml]
+[C:/Users/trangr/Documents/GitHub/Media-Tracker/MediaTracker/CompletedPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MediaTracker.CompletedPage.xaml
 build_metadata.AdditionalFiles.TargetPath = CompletedPage.xaml
 build_metadata.AdditionalFiles.RelativePath = CompletedPage.xaml
 
-[C:/Users/Rocky/Documents/GitHub/Media-Tracker/MediaTracker/CurrentlyWatchingPage.xaml]
+[C:/Users/trangr/Documents/GitHub/Media-Tracker/MediaTracker/CurrentlyWatchingPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MediaTracker.CurrentlyWatchingPage.xaml
 build_metadata.AdditionalFiles.TargetPath = CurrentlyWatchingPage.xaml
 build_metadata.AdditionalFiles.RelativePath = CurrentlyWatchingPage.xaml
 
-[C:/Users/Rocky/Documents/GitHub/Media-Tracker/MediaTracker/LibraryPage.xaml]
+[C:/Users/trangr/Documents/GitHub/Media-Tracker/MediaTracker/LibraryPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MediaTracker.LibraryPage.xaml
 build_metadata.AdditionalFiles.TargetPath = LibraryPage.xaml
 build_metadata.AdditionalFiles.RelativePath = LibraryPage.xaml
 
-[C:/Users/Rocky/Documents/GitHub/Media-Tracker/MediaTracker/MainPage.xaml]
+[C:/Users/trangr/Documents/GitHub/Media-Tracker/MediaTracker/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MediaTracker.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
-[C:/Users/Rocky/Documents/GitHub/Media-Tracker/MediaTracker/Resources/Styles/Colors.xaml]
+[C:/Users/trangr/Documents/GitHub/Media-Tracker/MediaTracker/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MediaTracker.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
 
-[C:/Users/Rocky/Documents/GitHub/Media-Tracker/MediaTracker/Resources/Styles/Styles.xaml]
+[C:/Users/trangr/Documents/GitHub/Media-Tracker/MediaTracker/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MediaTracker.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml

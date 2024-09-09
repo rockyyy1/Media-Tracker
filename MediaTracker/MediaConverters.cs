@@ -40,10 +40,6 @@ namespace MediaTracker
             else if (value is string plot)
             {
                 string cleanedPlot = Regex.Replace(plot, "<.*?>", string.Empty);
-                if (cleanedPlot.Length > 200)
-                {
-                    return cleanedPlot.Substring(0, 197) + "...";
-                }
                 return cleanedPlot;
             }
             return value;

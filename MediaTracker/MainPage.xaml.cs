@@ -54,12 +54,34 @@ namespace MediaTracker
                                 movieData = JsonConvert.DeserializeObject<Movie>(responseString);
                                 LoadSuggestion(movieData);
                             }
+                            else
+                            {
+                                JSONresponse.Text = "No record found";
+                                descriptionSummary.Text = "";
+                                posterImage.Source = null;
+                                availabilityLbl.Text = "";
+                                dateOfReleaseLbl.Text = "";
+                                countdownLbl.Text = "";
+                                statusStackLayout.Children.Clear();
+                                TrackThisBtn.IsVisible = false;
+                            }
                             break;
                         case "tv":
                             if (type == "series")
                             {
                                 tvData = JsonConvert.DeserializeObject<TVShow>(responseString);
                                 LoadSuggestion(tvData);
+                            }
+                            else
+                            {
+                                JSONresponse.Text = "No record found";
+                                descriptionSummary.Text = "";
+                                posterImage.Source = null;
+                                availabilityLbl.Text = "";
+                                dateOfReleaseLbl.Text = "";
+                                countdownLbl.Text = "";
+                                statusStackLayout.Children.Clear();
+                                TrackThisBtn.IsVisible = false;
                             }
                             break;
                         case "book":
@@ -73,6 +95,17 @@ namespace MediaTracker
 
                                 volData = await GetBookDetails(bookId);
                                 LoadSuggestion(volData.volumeInfo);
+                            }
+                            else
+                            {
+                                JSONresponse.Text = "No record found";
+                                descriptionSummary.Text = "";
+                                posterImage.Source = null;
+                                availabilityLbl.Text = "";
+                                dateOfReleaseLbl.Text = "";
+                                countdownLbl.Text = "";
+                                statusStackLayout.Children.Clear();
+                                TrackThisBtn.IsVisible = false;
                             }
                             break;
                         default:
@@ -413,6 +446,7 @@ namespace MediaTracker
                         //Debug.WriteLine("Issa tvshow!");
                         string TVTitle = titleEntry.Text.Replace(" ", "-");
                         string TVRequest = film_search + TVTitle + API_KEY;
+                        Debug.WriteLine(TVRequest);
                         ReadAPI(TVRequest, "tv");
                         break;
                     case "Book":
@@ -547,7 +581,7 @@ namespace MediaTracker
                         imdbRating = movieData.imdbRating,
                         BoxOffice = movieData.BoxOffice
                     };
-                    //Debug.WriteLine(NewMovie.UserStatus);
+                    Debug.WriteLine(NewMovie.UserStatus);
                     if (!LibraryPage.Library.Any(m => m.Title == NewMovie.Title && m.Type == NewMovie.Type))
                     {
                         LibraryPage.Library.Add(NewMovie);
@@ -589,7 +623,7 @@ namespace MediaTracker
                     string formattedDate;
                     if (DateTime.TryParseExact(publishedDate, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
                     {
-                        formattedDate = parsedDate.ToString("dd/MM/yyyy");
+                        formattedDate = parsedDate.ToString("d MMM yyyy");
                     }
                     else
                     {
@@ -607,7 +641,7 @@ namespace MediaTracker
                         }
                         else  //full date
                         {
-                            formattedReleaseDate = releaseDate.ToString("dd/MM/yyyy");
+                            formattedReleaseDate = releaseDate.ToString("dd/M/yyyy");
                         }
                     }
                     else
@@ -615,8 +649,13 @@ namespace MediaTracker
                         Debug.WriteLine("could not parse publication date");
                         formattedReleaseDate = "N/A";
                     }
-                    DateTime d = DateTime.ParseExact(formattedReleaseDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    volData.Availability = CheckAvailability(d);
+
+                    if (formattedReleaseDate != "N/A")
+                    {
+                        DateTime d = DateTime.ParseExact(formattedReleaseDate, "dd/M/yyyy", CultureInfo.InvariantCulture);
+                        volData.Availability = CheckAvailability(d);
+                        volData.DaysUntilRelease = (d - DateTime.Now).Days.ToString();
+                    }
                     
                     Book newBook = new Book
                     {
@@ -626,7 +665,8 @@ namespace MediaTracker
                         Date = DateTime.Now,
                         Availability = volData.Availability,
                         UserStatus = GetSelectedUserStatus(),
-                        DaysUntilRelease = (d - DateTime.Now).Days.ToString(),
+                        //DaysUntilRelease = (d - DateTime.Now).Days.ToString(),
+                        DaysUntilRelease = volData.DaysUntilRelease,
                         volumeInfo = new Volumeinfo 
                         {
                             title = volData.volumeInfo.title,
@@ -653,6 +693,7 @@ namespace MediaTracker
             }
         }
 
+        //generic button to test anything
         private void testbtn_Clicked(object sender, EventArgs e)
         {
 

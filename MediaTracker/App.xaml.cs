@@ -13,8 +13,8 @@ namespace MediaTracker
         {
             return new Window(new AppShell())
             {
-                MinimumWidth = 760,
-                MaximumWidth = 760,
+                MinimumWidth = 790,
+                MaximumWidth = 790,
                 MinimumHeight = 1000,
                 MaximumHeight = 1000,
                 X = 100,

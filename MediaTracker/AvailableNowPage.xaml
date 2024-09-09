@@ -28,7 +28,7 @@
                                             <StackLayout Margin="20,0,0,0">
                                                 <Label Text="{Binding Title}" FontSize="16"/>
                                                 <Label Text="Plot:" FontSize="14" TextColor="Gray"/>
-                                                <Label Text="{Binding Plot, Converter={StaticResource MediaConverters}}" FontSize="14" LineBreakMode="WordWrap" MaxLines="2"/>
+                                                <Label Text="{Binding Plot, Converter={StaticResource MediaConverters}}" FontSize="14" WidthRequest="550" MaxLines="3"/>
                                             </StackLayout>
                                         </StackLayout>
                                     </Frame>
@@ -61,7 +61,7 @@
                                             <StackLayout Margin="20,0,0,0">
                                                 <Label Text="{Binding Title}" FontSize="16"/>
                                                 <Label Text="Plot:" FontSize="14" TextColor="Gray"/>
-                                                <Label Text="{Binding Plot, Converter={StaticResource MediaConverters}}" FontSize="14" LineBreakMode="WordWrap" MaxLines="2"/>
+                                                <Label Text="{Binding Plot, Converter={StaticResource MediaConverters}}" FontSize="14" WidthRequest="550" MaxLines="3"/>
                                             </StackLayout>
                                         </StackLayout>
                                     </Frame>
@@ -95,7 +95,7 @@
                                             <StackLayout Margin="20,0,0,0">
                                                 <Label Text="{Binding Title}" FontSize="16"/>
                                                 <Label Text="Plot:" FontSize="14" TextColor="Gray"/>
-                                                <Label Text="{Binding Plot, Converter={StaticResource MediaConverters}}" FontSize="14" LineBreakMode="WordWrap" MaxLines="2"/>
+                                                <Label Text="{Binding Plot, Converter={StaticResource MediaConverters}}" FontSize="14" WidthRequest="550" MaxLines="3"/>
                                             </StackLayout>
                                         </StackLayout>
                                     </Frame>
