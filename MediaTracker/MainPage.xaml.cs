@@ -298,7 +298,7 @@ namespace MediaTracker
             if (availability == AvailabilityStatusEnum.AVAILABLE_NOW)
             {
                 statusCheckStackLayout.Children.Add(watchlistRadioButton);
-                statusCheckStackLayout.Children.Add(watchingRadioButton); 
+                statusCheckStackLayout.Children.Add(watchingRadioButton);
                 statusCheckStackLayout.Children.Add(completedRadioButton);
             }
             else if (availability == AvailabilityStatusEnum.COMING_SOON)
@@ -397,7 +397,7 @@ namespace MediaTracker
             string publisher = volData.publisher;
             string description = volData.description;
             string categoriesString = volData.categories != null ? string.Join(", ", volData.categories) : string.Empty;
-            int pages = volData.pageCount;
+            int pages = (int)volData.pageCount;
             //string bookCoverURL = volData.imageLinks.thumbnail;
             string bookCoverURL = volData.imageLinks != null ? volData.imageLinks.thumbnail : null;
 
@@ -411,7 +411,7 @@ namespace MediaTracker
             descriptionSummary.Text = "Description: " + description + "\n";
 
 
-            if (bookCoverURL!=null)
+            if (bookCoverURL != null)
             {
                 posterImage.Source = ImageSource.FromUri(new Uri(bookCoverURL));
             }
@@ -429,6 +429,8 @@ namespace MediaTracker
         //Search button
         private void SearchBtn_Clicked(object sender, EventArgs e)
         {
+            CustomStacklayout.IsVisible = false;
+            CustomTrackThisBtn.IsVisible = false;
             descriptionSummary.Text = "";
             if (titleEntry.Text != "")
             {
@@ -491,7 +493,7 @@ namespace MediaTracker
                 default:
                     Debug.WriteLine("Unexpected RadioButton value");
                     return UserStatusEnum.WATCHLIST;
-            }   
+            }
         }
 
         //Return if media is available or not
@@ -653,7 +655,7 @@ namespace MediaTracker
                         volData.Availability = CheckAvailability(d);
                         volData.DaysUntilRelease = (d - DateTime.Now).Days.ToString();
                     }
-                    
+
                     Book newBook = new Book
                     {
                         Title = volData.volumeInfo.title,
@@ -664,7 +666,7 @@ namespace MediaTracker
                         UserStatus = GetSelectedUserStatus(),
                         //DaysUntilRelease = (d - DateTime.Now).Days.ToString(),
                         DaysUntilRelease = volData.DaysUntilRelease,
-                        volumeInfo = new Volumeinfo 
+                        volumeInfo = new Volumeinfo
                         {
                             title = volData.volumeInfo.title,
                             authors = volData.volumeInfo.authors,
@@ -694,6 +696,84 @@ namespace MediaTracker
         private void testbtn_Clicked(object sender, EventArgs e)
         {
 
+        }
+
+        private void AddCustomBtn_Clicked(object sender, EventArgs e)
+        {
+            JSONresponse.Text = "";
+            descriptionSummary.Text = "";
+            posterImage.Source = null;
+            availabilityLbl.Text = "";
+            countdownLbl.Text = "";
+            dateOfReleaseLbl.Text = "";
+            CustomStacklayout.IsVisible = true;
+            CustomTrackThisBtn.IsVisible = true;
+            TrackThisBtn.IsVisible = false;
+            SearchBtn.IsVisible = false;
+            titleEntry.IsVisible = false;
+            CustomTrackThisBtn.IsEnabled = true;
+            CreateStatusCheckStackLayout(AvailabilityStatusEnum.AVAILABLE_NOW, "film");
+
+        }
+        private void CustomTrackThisBtn_Clicked(object sender, EventArgs e)
+        {
+            string selectedMediaType = GetSelectedMediaType();
+            JSONresponse.Text = "";
+            if (customTitleEntry.Text != "" || customTitleEntry.Text != null)
+            {
+                switch (selectedMediaType)
+                {
+                    case "Movie":
+                        Movie NewMovie = new Movie
+                        {
+                            Title = customTitleEntry.Text,
+                            Plot = customDescriptionEntry.Text,
+                            Type = "Movie",
+                            Availability = AvailabilityStatusEnum.AVAILABLE_NOW,
+                        };
+                        LibraryPage.Library.Add(NewMovie);
+                        CustomTrackThisBtn.IsEnabled = false;
+                        Debug.WriteLine("Created a custom movie: " + NewMovie.Title);
+                        break;
+                    case "TVShow":
+                        TVShow NewTVShow = new TVShow
+                        {
+                            Title = customTitleEntry.Text,
+                            Plot = customDescriptionEntry.Text,
+                            Type = "TVShow",
+                            Availability = AvailabilityStatusEnum.AVAILABLE_NOW
+                        };
+                        LibraryPage.Library.Add(NewTVShow);
+                        CustomTrackThisBtn.IsEnabled = false;
+
+                        break;
+                    case "Book":
+                        Book newBook = new Book
+                        {
+                            Title = customTitleEntry.Text,
+                            Plot = customDescriptionEntry.Text,
+                            Type = "Book",
+                            Availability = AvailabilityStatusEnum.AVAILABLE_NOW
+                        };
+                        LibraryPage.Library.Add(newBook);
+                        CustomTrackThisBtn.IsEnabled = false;
+
+                        break;
+                    default:
+                        Debug.WriteLine("No media type selected");
+                        break;
+                }
+            }
+            LibraryPage.Instance.RefreshListDisplay();
+        }
+
+        private void SearchOnlineBtn_Clicked(object sender, EventArgs e)
+        {
+            CustomStacklayout.IsVisible = false;
+            CustomTrackThisBtn.IsVisible = false;
+            SearchBtn.IsVisible = true;
+            titleEntry.IsVisible = true;
+            statusStackLayout.Children.Clear();
         }
     }
 }

@@ -7,7 +7,7 @@
     <ScrollView>
         <VerticalStackLayout>
             <!-- Radio Buttons -->
-            <StackLayout>
+            <StackLayout x:Name="TypeStackLayout">
                 <Label Text="Select Media Type" HorizontalOptions="Center" FontSize="Medium"/>
                 <Label></Label>
                 <StackLayout x:Name="MediaTypeStackLayout" RadioButtonGroup.GroupName="MediaTypes"
@@ -54,12 +54,20 @@
                 </StackLayout>
             </StackLayout>
             <Label></Label>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Button x:Name="SearchOnlineBtn" Clicked="SearchOnlineBtn_Clicked"  Text="Search Online" FontSize="Medium" FontAttributes="Bold" WidthRequest="200" BackgroundColor="Orange"></Button>
+                <Button x:Name="AddCustomBtn" Clicked="AddCustomBtn_Clicked" Text="Add custom" FontSize="Medium" FontAttributes="Bold" WidthRequest="200" BackgroundColor="Orange"></Button>
+            </HorizontalStackLayout>
             <!-- Entry -->
-            <Entry Placeholder="Search by Title" x:Name="titleEntry" HorizontalTextAlignment="Center" HorizontalOptions="Center" WidthRequest="500"></Entry>
+            <Entry Placeholder="Search by Title" x:Name="titleEntry" HorizontalTextAlignment="Center" HorizontalOptions="Center" WidthRequest="500" IsVisible="False"></Entry>
             <!-- Search Button -->
-            <Button x:Name="SearchBtn" Clicked="SearchBtn_Clicked" Text="Search" FontSize="Medium" FontAttributes="Bold" WidthRequest="500" BackgroundColor="MediumSpringGreen"></Button>
-            <Label></Label>
+            <Button x:Name="SearchBtn" Clicked="SearchBtn_Clicked" Text="Search" FontSize="Medium" FontAttributes="Bold" WidthRequest="500" BackgroundColor="MediumSpringGreen" IsVisible="False"></Button>
+            <Label ></Label>
             <!-- Text -->
+            <VerticalStackLayout x:Name="CustomStacklayout" IsVisible="False">
+                <Entry x:Name="customTitleEntry" HorizontalOptions="Center" WidthRequest="400" Placeholder="Title"/>
+                <Editor x:Name="customDescriptionEntry" HorizontalOptions="Center" WidthRequest="400" Placeholder="Description" HeightRequest="100" VerticalTextAlignment="Start"/>
+            </VerticalStackLayout>
             <Label x:Name="JSONresponse" WidthRequest="500" ></Label>
             <Label x:Name="descriptionSummary" WidthRequest="500" TextType="Html" ></Label>
             <!-- Image -->
@@ -73,6 +81,7 @@
             <StackLayout x:Name="statusStackLayout"></StackLayout>
             <!-- Select -->
             <Button x:Name="TrackThisBtn" Clicked="TrackThisBtn_Clicked" Text="Track this!" FontSize="Medium" FontAttributes="Bold" WidthRequest="500" IsVisible="False"></Button>
+            <Button x:Name="CustomTrackThisBtn" Clicked="CustomTrackThisBtn_Clicked" Text="Track this!!" FontSize="Medium" FontAttributes="Bold" WidthRequest="500" IsVisible="False"></Button>
             <Label></Label>
             
             <!-- test-->
