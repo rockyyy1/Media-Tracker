@@ -42,6 +42,14 @@ namespace MediaTracker
                 string cleanedPlot = Regex.Replace(plot, "<.*?>", string.Empty);
                 return cleanedPlot;
             }
+            else if (value is int count)
+            {
+                return count == 0;
+            }
+            else if (value is string[] array)
+            {
+                return string.Join(", ", array);
+            }
             return value;
         }
 

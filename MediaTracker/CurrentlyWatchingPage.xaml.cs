@@ -6,13 +6,13 @@ public partial class CurrentlyWatchingPage : ContentPage
 	{
         InitializeComponent();
         MovieList.ItemsSource = LibraryPage.Instance.movieList
-            .Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING);
+            .Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING).ToList();
 
         TVShowList.ItemsSource = LibraryPage.Instance.tvShowList
-            .Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING);
+            .Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING).ToList();
 
         BookList.ItemsSource = LibraryPage.Instance.bookList
-            .Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING);
+            .Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING).ToList();
 
         LibraryPage.Instance.LibraryUpdated += OnLibraryUpdated;
 
@@ -20,9 +20,9 @@ public partial class CurrentlyWatchingPage : ContentPage
     private void OnLibraryUpdated(object sender, EventArgs e)
     {
         // Update list views with latest filtered data
-        MovieList.ItemsSource = LibraryPage.Instance.movieList.Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING);
-        TVShowList.ItemsSource = LibraryPage.Instance.tvShowList.Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING);
-        BookList.ItemsSource = LibraryPage.Instance.bookList.Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING);
+        MovieList.ItemsSource = LibraryPage.Instance.movieList.Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING).ToList();
+        TVShowList.ItemsSource = LibraryPage.Instance.tvShowList.Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING).ToList();
+        BookList.ItemsSource = LibraryPage.Instance.bookList.Where(m => m.UserStatus == UserStatusEnum.CURRENTLY_VIEWING).ToList();
     }
     private void ToggleMovieListVisibility(object sender, EventArgs e)
     {
@@ -41,5 +41,25 @@ public partial class CurrentlyWatchingPage : ContentPage
     {
         BookList.IsVisible = !BookList.IsVisible;
         BookTapImage.Source = BookList.IsVisible ? "show.png" : "hide.png";
+    }
+    public void HandleItemSelected(object sender, ItemTappedEventArgs e)
+    {
+        var listView = (ListView)sender;
+
+        if (sender == MovieList)
+        {
+            Movie selectedItem = (Movie)e.Item;
+            Navigation.PushModalAsync(new MovieDetailsPage(selectedItem));
+        }
+        else if (listView == TVShowList)
+        {
+            TVShow selectedItem = (TVShow)e.Item;
+            Navigation.PushModalAsync(new TVShowDetailsPage(selectedItem));
+        }
+        else if (listView == BookList)
+        {
+            Book selectedItem = (Book)e.Item;
+            Navigation.PushModalAsync(new BookDetailsPage(selectedItem));
+        }
     }
 }

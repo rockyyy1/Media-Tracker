@@ -432,6 +432,7 @@ namespace MediaTracker
             descriptionSummary.Text = "";
             if (titleEntry.Text != "")
             {
+                TrackThisBtn.IsEnabled = true;
                 string selectedMediaType = GetSelectedMediaType();
 
                 switch (selectedMediaType)
@@ -581,13 +582,11 @@ namespace MediaTracker
                         imdbRating = movieData.imdbRating,
                         BoxOffice = movieData.BoxOffice
                     };
-                    Debug.WriteLine(NewMovie.UserStatus);
+                    //Debug.WriteLine(NewMovie.UserStatus);
                     if (!LibraryPage.Library.Any(m => m.Title == NewMovie.Title && m.Type == NewMovie.Type))
                     {
                         LibraryPage.Library.Add(NewMovie);
                     }
-                    LibraryPage.Instance.RefreshListDisplay();
-
                     break;
                 case "TVShow":
                     TVShow newTVShow = new TVShow
@@ -614,8 +613,6 @@ namespace MediaTracker
                     if (!LibraryPage.Library.Any(m => m.Title == newTVShow.Title && m.Type == newTVShow.Type))
                     {
                         LibraryPage.Library.Add(newTVShow);
-                        LibraryPage.Instance.RefreshListDisplay();
-
                     }
                     break;
                 case "Book":
@@ -679,18 +676,18 @@ namespace MediaTracker
                             imageLinks = volData.volumeInfo.imageLinks
                         }
                     };
-                    Debug.WriteLine("Created Book:" + newBook.volumeInfo.DaysUntilRelease);
+                    //Debug.WriteLine("Created Book:" + newBook.volumeInfo.DaysUntilRelease);
                     if (!LibraryPage.Library.Any(m => m.Title == newBook.Title && m.Type == newBook.Type))
                     {
                         LibraryPage.Library.Add(newBook);
-                        LibraryPage.Instance.RefreshListDisplay();
-
                     }
                     break;
                 default:
                     Debug.WriteLine("No media type selected");
                     break;
             }
+            LibraryPage.Instance.RefreshListDisplay();
+            TrackThisBtn.IsEnabled = false;
         }
 
         //generic button to test anything

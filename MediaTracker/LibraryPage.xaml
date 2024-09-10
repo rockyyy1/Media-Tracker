@@ -3,22 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MediaTracker"
              x:Class="MediaTracker.LibraryPage"
-             Title="My Library">
+             Title="ALl items">
     <ScrollView>
         <VerticalStackLayout>
             <StackLayout Margin="20">
                 <Grid>
                     <Frame BorderColor="Black" Padding="5">
-                        <Label Text="Movies" FontSize="18" FontAttributes="Bold">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ToggleMovieListVisibility"/>
-                            </Label.GestureRecognizers>
-                        </Label>
+                            <Label Text="Movies" FontSize="18" FontAttributes="Bold">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ToggleMovieListVisibility"/>
+                                </Label.GestureRecognizers>
+                            </Label>
                     </Frame>
                     <Image x:Name="MovieTapImage" Source="show.png" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0"/>
                 </Grid>
+                <Label Text="No items" FontAttributes="Italic" TextColor="Gray" IsVisible="{Binding Source={x:Reference MovieList}, Path=ItemsSource.Count, Converter={StaticResource MediaConverters}}"/>
                 <StackLayout x:Name="MovieListContent">
-                    <ListView x:Name="MovieList" VerticalOptions="FillAndExpand" IsVisible="True">
+                    <ListView x:Name="MovieList" VerticalOptions="FillAndExpand" IsVisible="True" ItemTapped="HandleItemSelected">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -54,8 +55,9 @@
                     </Frame>
                     <Image x:Name="TVShowTapImage" Source="show.png" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0"/>
                         </Grid>
-                        <StackLayout x:Name="TVShowListContent">
-                    <ListView x:Name="TVShowList" VerticalOptions="FillAndExpand" IsVisible="True">
+                <Label Text="No items" FontAttributes="Italic" TextColor="Gray" IsVisible="{Binding Source={x:Reference TVShowList}, Path=ItemsSource.Count, Converter={StaticResource MediaConverters}}"/>
+                <StackLayout x:Name="TVShowListContent">
+                    <ListView x:Name="TVShowList" VerticalOptions="FillAndExpand" IsVisible="True" ItemTapped="HandleItemSelected">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -92,8 +94,9 @@
                     </Frame>
                     <Image x:Name="BookTapImage" Source="show.png" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="20" HeightRequest="20" Margin="0,0,10,0"/>
                                 </Grid>
-                                    <StackLayout x:Name="BookListContent">
-                    <ListView x:Name="BookList" VerticalOptions="FillAndExpand" IsVisible="True">
+                <Label Text="No items" FontAttributes="Italic" TextColor="Gray" IsVisible="{Binding Source={x:Reference BookList}, Path=ItemsSource.Count, Converter={StaticResource MediaConverters}}"/>
+                <StackLayout x:Name="BookListContent">
+                    <ListView x:Name="BookList" VerticalOptions="FillAndExpand" IsVisible="True" ItemTapped="HandleItemSelected">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>

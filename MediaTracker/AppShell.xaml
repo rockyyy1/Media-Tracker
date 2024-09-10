@@ -9,32 +9,32 @@
 
     <TabBar >
         <Tab
-            Title="My Library">
+            Title="All items">
             <ShellContent 
                 Title="Library"
                 Route="MainPage"
                 ContentTemplate="{DataTemplate local:LibraryPage}" />
         </Tab>
         <Tab
-            Title="Add New Item">
+            Title="Add Media">
             <ShellContent 
                 Route="LibraryPage"
                 ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
         <Tab
-            Title="Currently Watching">
+            Title="In Progress">
             <ShellContent 
             Route="CurrentlyWatchingPage"
             ContentTemplate="{DataTemplate local:CurrentlyWatchingPage}" />
         </Tab>
         <Tab
-            Title="Available Now">
+            Title="Available Watchlist">
             <ShellContent 
                 Route="AvailableNowPage"
                 ContentTemplate="{DataTemplate local:AvailableNowPage}" />
         </Tab>
         <Tab
-            Title="Coming Soon">
+            Title="Future Releases">
             <ShellContent 
                 Route="ComingSoonPage"
                 ContentTemplate="{DataTemplate local:ComingSoonPage}" />

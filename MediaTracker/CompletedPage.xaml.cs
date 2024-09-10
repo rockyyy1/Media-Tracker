@@ -6,13 +6,13 @@ public partial class CompletedPage : ContentPage
 	{
         InitializeComponent();
         MovieList.ItemsSource = LibraryPage.Instance.movieList
-            .Where(m => m.UserStatus == UserStatusEnum.COMPLETED);
+            .Where(m => m.UserStatus == UserStatusEnum.COMPLETED).ToList();
 
         TVShowList.ItemsSource = LibraryPage.Instance.tvShowList
-            .Where(m => m.UserStatus == UserStatusEnum.COMPLETED);
+            .Where(m => m.UserStatus == UserStatusEnum.COMPLETED).ToList();
 
         BookList.ItemsSource = LibraryPage.Instance.bookList
-            .Where(m => m.UserStatus == UserStatusEnum.COMPLETED);
+            .Where(m => m.UserStatus == UserStatusEnum.COMPLETED).ToList();
 
         LibraryPage.Instance.LibraryUpdated += OnLibraryUpdated;
 
@@ -20,9 +20,9 @@ public partial class CompletedPage : ContentPage
     private void OnLibraryUpdated(object sender, EventArgs e)
     {
         // Update list views with latest filtered data
-        MovieList.ItemsSource = LibraryPage.Instance.movieList.Where(m => m.UserStatus == UserStatusEnum.COMPLETED);
-        TVShowList.ItemsSource = LibraryPage.Instance.tvShowList.Where(m => m.UserStatus == UserStatusEnum.COMPLETED);
-        BookList.ItemsSource = LibraryPage.Instance.bookList.Where(m => m.UserStatus == UserStatusEnum.COMPLETED);
+        MovieList.ItemsSource = LibraryPage.Instance.movieList.Where(m => m.UserStatus == UserStatusEnum.COMPLETED).ToList();
+        TVShowList.ItemsSource = LibraryPage.Instance.tvShowList.Where(m => m.UserStatus == UserStatusEnum.COMPLETED).ToList();
+        BookList.ItemsSource = LibraryPage.Instance.bookList.Where(m => m.UserStatus == UserStatusEnum.COMPLETED).ToList();
     }
     private void ToggleMovieListVisibility(object sender, EventArgs e)
     {
@@ -41,5 +41,25 @@ public partial class CompletedPage : ContentPage
     {
         BookList.IsVisible = !BookList.IsVisible;
         BookTapImage.Source = BookList.IsVisible ? "show.png" : "hide.png";
+    }
+    public void HandleItemSelected(object sender, ItemTappedEventArgs e)
+    {
+        var listView = (ListView)sender;
+
+        if (sender == MovieList)
+        {
+            Movie selectedItem = (Movie)e.Item;
+            Navigation.PushModalAsync(new MovieDetailsPage(selectedItem));
+        }
+        else if (listView == TVShowList)
+        {
+            TVShow selectedItem = (TVShow)e.Item;
+            Navigation.PushModalAsync(new TVShowDetailsPage(selectedItem));
+        }
+        else if (listView == BookList)
+        {
+            Book selectedItem = (Book)e.Item;
+            Navigation.PushModalAsync(new BookDetailsPage(selectedItem));
+        }
     }
 }

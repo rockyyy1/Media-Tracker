@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Globalization;
+using System.Text.Json.Serialization;
 
 public enum UserStatusEnum
 {
@@ -25,6 +26,7 @@ public class MediaItem
 }
 public class Movie : MediaItem
 {
+    [JsonProperty("Year")]
     public string Year { get; set; }
     public string Rated { get; set; }
     public string Released { get; set; }

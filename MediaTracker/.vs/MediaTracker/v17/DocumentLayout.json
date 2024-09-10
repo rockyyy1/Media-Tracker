@@ -3,40 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|c:\\users\\rocky\\documents\\github\\media-tracker\\mediatracker\\mediaitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|solutionrelative:mediaitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|c:\\users\\rocky\\documents\\github\\media-tracker\\mediatracker\\comingsoonpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|solutionrelative:comingsoonpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|c:\\users\\rocky\\documents\\github\\media-tracker\\mediatracker\\comingsoonpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|solutionrelative:comingsoonpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|c:\\users\\rocky\\documents\\github\\media-tracker\\mediatracker\\librarypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|solutionrelative:librarypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|c:\\users\\rocky\\documents\\github\\media-tracker\\mediatracker\\librarypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|solutionrelative:librarypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|c:\\users\\rocky\\documents\\github\\media-tracker\\mediatracker\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|solutionrelative:mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|c:\\users\\rocky\\documents\\github\\media-tracker\\mediatracker\\completedpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|solutionrelative:completedpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|c:\\users\\rocky\\documents\\github\\media-tracker\\mediatracker\\availablenowpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|solutionrelative:availablenowpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|c:\\users\\rocky\\documents\\github\\media-tracker\\mediatracker\\completedpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|solutionrelative:completedpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{692B3966-05C5-4D37-AD85-C38224E458B1}|MediaTracker.csproj|c:\\users\\rocky\\documents\\github\\media-tracker\\mediatracker\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -58,7 +26,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 2,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\App.xaml.cs",
               "RelativeDocumentMoniker": "App.xaml.cs",
@@ -72,13 +40,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
               "Title": "AppShell.xaml",
               "DocumentMoniker": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\AppShell.xaml",
               "RelativeDocumentMoniker": "AppShell.xaml",
               "ToolTip": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\AppShell.xaml",
               "RelativeToolTip": "AppShell.xaml",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAUwCIAAAAOAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACMAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-09-07T04:15:46.542Z",
               "IsPinned": true,
@@ -87,119 +55,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MediaItem.cs",
-              "DocumentMoniker": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\MediaItem.cs",
-              "RelativeDocumentMoniker": "MediaItem.cs",
-              "ToolTip": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\MediaItem.cs",
-              "RelativeToolTip": "MediaItem.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAYwDAAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-08T09:36:05.429Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ComingSoonPage.xaml",
-              "DocumentMoniker": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\ComingSoonPage.xaml",
-              "RelativeDocumentMoniker": "ComingSoonPage.xaml",
-              "ToolTip": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\ComingSoonPage.xaml",
-              "RelativeToolTip": "ComingSoonPage.xaml",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAAG8AAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-08T15:46:00.501Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "CompletedPage.xaml",
               "DocumentMoniker": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\CompletedPage.xaml",
               "RelativeDocumentMoniker": "CompletedPage.xaml",
               "ToolTip": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\CompletedPage.xaml",
               "RelativeToolTip": "CompletedPage.xaml",
-              "ViewState": "AQIAACkAAAAAAAAAAAAcwHkAAAAOAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-08T15:22:22.301Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LibraryPage.xaml",
-              "DocumentMoniker": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\LibraryPage.xaml",
-              "RelativeDocumentMoniker": "LibraryPage.xaml",
-              "ToolTip": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\LibraryPage.xaml",
-              "RelativeToolTip": "LibraryPage.xaml",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAEwGwAAABBAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-07T09:39:57.242Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LibraryPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\LibraryPage.xaml.cs",
-              "RelativeDocumentMoniker": "LibraryPage.xaml.cs",
-              "ToolTip": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\LibraryPage.xaml.cs",
-              "RelativeToolTip": "LibraryPage.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-07T10:09:43.019Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ComingSoonPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\ComingSoonPage.xaml.cs",
-              "RelativeDocumentMoniker": "ComingSoonPage.xaml.cs",
-              "ToolTip": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\ComingSoonPage.xaml.cs",
-              "RelativeToolTip": "ComingSoonPage.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-08T15:46:07.424Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MainPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\MainPage.xaml.cs",
-              "RelativeDocumentMoniker": "MainPage.xaml.cs",
-              "ToolTip": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\MainPage.xaml.cs",
-              "RelativeToolTip": "MainPage.xaml.cs",
-              "ViewState": "AQIAAC8CAAAAAAAAAAAlwHcCAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-08T15:49:26.371Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AvailableNowPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\AvailableNowPage.xaml.cs",
-              "RelativeDocumentMoniker": "AvailableNowPage.xaml.cs",
-              "ToolTip": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\AvailableNowPage.xaml.cs",
-              "RelativeToolTip": "AvailableNowPage.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-08T18:38:25.2Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CompletedPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\CompletedPage.xaml.cs",
-              "RelativeDocumentMoniker": "CompletedPage.xaml.cs",
-              "ToolTip": "C:\\Users\\Rocky\\Documents\\GitHub\\Media-Tracker\\MediaTracker\\CompletedPage.xaml.cs",
-              "RelativeToolTip": "CompletedPage.xaml.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAxwAcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-08T10:11:47.848Z",
+              "WhenOpened": "2024-09-10T10:08:01.565Z",
               "EditorCaption": ""
             }
           ]

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MediaTracker"
+             x:Class="MediaTracker.TVShowDetailsPage">
+    <StackLayout>
+        <Button Text="BACK" WidthRequest="100" HorizontalOptions="Start" Margin="10,20,0,0" Background="Red" x:Name="BackBtn" Clicked="BackBtn_Clicked"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="450"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="{Binding Poster}" Aspect="AspectFill" HeightRequest="450" VerticalOptions="Start" Margin="10,50,0,0"/>
+            <ScrollView Grid.Column="1" HeightRequest="800" Orientation="Vertical">
+                <StackLayout VerticalOptions="Start" Padding="20,40,0,0">
+                    <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold"/>
+                    <Label Text="{Binding Plot}" FontSize="14" LineBreakMode="WordWrap" WidthRequest="400" HorizontalOptions="Start"/>
+                    <Label Text="Details:" FontSize="16" FontAttributes="Bold" Margin="0,20,0,0"/>
+                    <Label Text="{Binding Type, StringFormat='Type: {0}'}" FontSize="14"/>
+                    <Label Text="{Binding UserStatus, StringFormat='User Status: {0}'}" FontSize="14"/>
+                    <Label Text="{Binding Availability, StringFormat='Availability: {0}'}" FontSize="14"/>
+                    <Label Text="TV Show Details:" FontSize="16" FontAttributes="Bold" Margin="0,20,0,0"/>
+                    <Label Text="{Binding totalSeasons, StringFormat='Total Seasons: {0}'}" FontSize="14"/>
+                    <Label Text="{Binding Released, StringFormat='Release Date: {0:d MM yyyy}'}" FontSize="14"/>
+                    <Label Text="{Binding Year, StringFormat='Year: {0}'}" FontSize="14"/>
+                    <Label Text="{Binding Rated, StringFormat='Rated: {0}'}" FontSize="14"/>
+                    <Label Text="{Binding Runtime, StringFormat='Runtime: {0}'}" FontSize="14"/>
+                    <Label Text="{Binding Genre, StringFormat='Genre: {0}'}" FontSize="14"/>
+                    <Label Text="{Binding Writer, StringFormat='Writer: {0}'}" FontSize="14"/>
+                    <Label Text="{Binding Actors, StringFormat='Actors: {0}'}" FontSize="14"/>
+                    <Label Text="{Binding Country, StringFormat='Country: {0}'}" FontSize="14"/>
+                    <Label Text="{Binding Awards, StringFormat='Awards: {0}'}" FontSize="14"/>
+                    <Label Text="{Binding Metascore, StringFormat='Metascore: {0}'}" FontSize="14"/>
+                    <Label Text="{Binding imdbRating, StringFormat='IMDB Rating: {0}'}" FontSize="14"/>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+
+
+        <HorizontalStackLayout HorizontalOptions="Start">
+            <Button Margin="10"  Text="Mark Currently Viewing" Clicked="MarkCurrentlyViewing_Clicked" IsVisible="{Binding UserStatus, Converter={StaticResource UserStatusConverter}, ConverterParameter=MarkCurrentlyViewing}"/>
+            <Button Margin="10" Text="Mark Completed" Clicked="MarkCompleted_Clicked" IsVisible="{Binding UserStatus, Converter={StaticResource UserStatusConverter}, ConverterParameter=MarkCompleted}"/>
+            <Button Margin="10" Text="Remove from Library" Clicked="RemoveFromLibrary_Clicked" IsVisible="{Binding UserStatus, Converter={StaticResource UserStatusConverter}, ConverterParameter=RemoveFromLibrary}"/>
+        </HorizontalStackLayout>
+    </StackLayout>
+
+    <ContentPage.Resources>
+        <local:UserStatusConverter x:Key="UserStatusConverter"/>
+    </ContentPage.Resources>
+    
+    </ContentPage>
