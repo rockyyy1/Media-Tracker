@@ -90,9 +90,31 @@ public class TVShow : MediaItem
 public class Book : MediaItem
 {
     public int totalItems { get; set; }
-    public string? DaysUntilRelease { get; set; }
     public Volumeinfo? volumeInfo { get; set; }
     public items[]? items { get; set; }
+    //public string? DaysUntilRelease { get; set; }
+    public string? DaysUntilRelease
+    {
+        get
+        {
+            if (volumeInfo?.publishedDate == null || volumeInfo.publishedDate.Length == 4)
+            {
+                return "N/A";
+            }
+            else
+            {
+                DateTime publishedDateTime;
+                if (DateTime.TryParseExact(volumeInfo.publishedDate, "d MMM yyyy", null, System.Globalization.DateTimeStyles.None, out publishedDateTime))
+                {
+                    return (publishedDateTime - DateTime.Today).Days.ToString();
+                }
+                else
+                {
+                    return "Invalid date format";
+                }
+            }
+        }
+    }
 }
 public class items
 {

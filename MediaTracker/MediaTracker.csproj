@@ -57,6 +57,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiAsset Remove="Resources\Raw\exampleLibrary.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Images\book.png" />
 	  <None Remove="Resources\Images\bookmark.png" />
 	  <None Remove="Resources\Images\checkmark.png" />
@@ -65,6 +69,10 @@
 	  <None Remove="Resources\Images\hide.png" />
 	  <None Remove="Resources\Images\show.png" />
 	  <None Remove="Resources\Images\tv.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Raw\exampleLibrary.json" />
 	</ItemGroup>
 
 	<ItemGroup>

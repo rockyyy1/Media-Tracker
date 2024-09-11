@@ -7,6 +7,7 @@
     <ScrollView>
         <VerticalStackLayout>
             <StackLayout Margin="20">
+                <Label Text="(click tab to hide/expand)" FontSize="12" TextColor="Gray" FontAttributes="Italic" x:Name="tooltip"></Label>
                 <Grid>
                     <Frame BorderColor="Black" Padding="5">
                             <Label Text="Movies" FontSize="18" FontAttributes="Bold">

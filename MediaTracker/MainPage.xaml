@@ -66,7 +66,12 @@
             <!-- Text -->
             <VerticalStackLayout x:Name="CustomStacklayout" IsVisible="False">
                 <Entry x:Name="customTitleEntry" HorizontalOptions="Center" WidthRequest="400" Placeholder="Title"/>
+                <Entry x:Name="customAuthorEntry" HorizontalOptions="Center" WidthRequest="400" Placeholder="Author" IsVisible="False"/>
                 <Editor x:Name="customDescriptionEntry" HorizontalOptions="Center" WidthRequest="400" Placeholder="Description" HeightRequest="100" VerticalTextAlignment="Start"/>
+                <StackLayout HorizontalOptions="Center"  x:Name="customDatePicker" IsVisible="False" >
+                    <Label Text="Release Date" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                    <DatePicker x:Name="datepicker" HorizontalOptions="Center"/>
+                </StackLayout>
             </VerticalStackLayout>
             <Label x:Name="JSONresponse" WidthRequest="500" ></Label>
             <Label x:Name="descriptionSummary" WidthRequest="500" TextType="Html" ></Label>

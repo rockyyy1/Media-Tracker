@@ -1,5 +1,9 @@
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Linq.Expressions;
+using System.Reflection;
+
+
 
 namespace MediaTracker;
 
@@ -20,6 +24,7 @@ public partial class LibraryPage : ContentPage
         LoadLibrary("userLibrary.json");
     }
 
+    //Refresh Lists
     public void RefreshListDisplay()
     {
         movieList = Library.OfType<Movie>().ToList();
@@ -31,25 +36,27 @@ public partial class LibraryPage : ContentPage
         LibraryUpdated?.Invoke(this, EventArgs.Empty);
         SaveLibrary("userLibrary.json");
     }
-
+    //Toggle List visibility
     private void ToggleMovieListVisibility(object sender, EventArgs e)
     {
+        tooltip.IsVisible = false;
         MovieList.IsVisible = !MovieList.IsVisible;
         MovieTapImage.Source = MovieList.IsVisible ? "show.png" : "hide.png";
     }
-
     private void ToggleTVShowListVisibility(object sender, EventArgs e)
     {
+        tooltip.IsVisible = false;
         TVShowList.IsVisible = !TVShowList.IsVisible;
         TVShowTapImage.Source = TVShowList.IsVisible ? "show.png" : "hide.png";
 
     }
-
     private void ToggleBookListVisibility(object sender, EventArgs e)
     {
+        tooltip.IsVisible = false;
         BookList.IsVisible = !BookList.IsVisible;
         BookTapImage.Source = BookList.IsVisible ? "show.png" : "hide.png";
     }
+    //User clicking on Item in list
     public void HandleItemSelected(object sender, ItemTappedEventArgs e)
     {
         var listView = (ListView)sender;
@@ -70,6 +77,7 @@ public partial class LibraryPage : ContentPage
             Navigation.PushModalAsync(new BookDetailsPage(selectedItem));
         }
     }
+    //loads pre-existing json file
     public void LoadLibrary(string fileName)
     {
         var localFolder = FileSystem.Current.AppDataDirectory;
@@ -108,14 +116,50 @@ public partial class LibraryPage : ContentPage
         }
         else
         {
-            // Initialize with empty lists if file does not exist
-            Library = new List<MediaItem>();
-            movieList = new List<Movie>();
-            tvShowList = new List<TVShow>();
-            bookList = new List<Book>();
-        }
-    }
+            // Load pre-loaded data from exampleLibrary.json in Resources\Raw
+            try
+            {
+                var assembly = Assembly.GetExecutingAssembly();
 
+                //read exampleLibrary.json in Resources\Raw
+                using var stream = assembly.GetManifestResourceStream("MediaTracker.Resources.Raw.exampleLibrary.json");
+
+                if (stream != null)
+                {
+                    var settings = new JsonSerializerSettings
+                    {
+                        TypeNameHandling = TypeNameHandling.Auto
+                    };
+                    using var reader = new StreamReader(stream);
+                    var json = reader.ReadToEnd();
+                    var mediaItems = JsonConvert.DeserializeObject<List<MediaItem>>(json, settings) ?? new List<MediaItem>();
+
+                    Library = mediaItems;
+                    movieList = mediaItems.OfType<Movie>().ToList();
+                    tvShowList = mediaItems.OfType<TVShow>().ToList();
+                    bookList = mediaItems.OfType<Book>().ToList();
+                    RefreshListDisplay();
+                }
+                else
+                {
+                    Debug.WriteLine("Resource file not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error loading example library: " + ex.Message);
+            }
+        }
+           /* else
+            {
+                // Create new lists
+                Library = new List<MediaItem>();
+                movieList = new List<Movie>();
+                tvShowList = new List<TVShow>();
+                bookList = new List<Book>();
+            }*/
+    }
+    //saves json file to appdata
     public void SaveLibrary(string fileName)
     {
         var localFolder = FileSystem.Current.AppDataDirectory;
@@ -139,5 +183,4 @@ public partial class LibraryPage : ContentPage
             Debug.WriteLine("Error saving library: " + ex.Message);
         }
     }
-
 }

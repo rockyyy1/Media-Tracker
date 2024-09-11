@@ -426,7 +426,7 @@ namespace MediaTracker
             volData.Plot = description;
             CreateStatusCheckStackLayout(volData.Availability, "book");
         }
-        //Search button
+        //Search button for online
         private void SearchBtn_Clicked(object sender, EventArgs e)
         {
             CustomStacklayout.IsVisible = false;
@@ -479,7 +479,7 @@ namespace MediaTracker
             return null;
         }
 
-        // Get user status selection
+        //Get user status selection
         private UserStatusEnum GetSelectedUserStatus()
         {
             switch (_selectedRadioButton.Value)
@@ -653,7 +653,7 @@ namespace MediaTracker
                     {
                         DateTime d = DateTime.ParseExact(formattedReleaseDate, "dd/M/yyyy", CultureInfo.InvariantCulture);
                         volData.Availability = CheckAvailability(d);
-                        volData.DaysUntilRelease = (d - DateTime.Now).Days.ToString();
+                        //tester volData.DaysUntilRelease = (d - DateTime.Now).Days.ToString();
                     }
 
                     Book newBook = new Book
@@ -665,7 +665,7 @@ namespace MediaTracker
                         Availability = volData.Availability,
                         UserStatus = GetSelectedUserStatus(),
                         //DaysUntilRelease = (d - DateTime.Now).Days.ToString(),
-                        DaysUntilRelease = volData.DaysUntilRelease,
+                        //tester DaysUntilRelease = volData.DaysUntilRelease,
                         volumeInfo = new Volumeinfo
                         {
                             title = volData.volumeInfo.title,
@@ -691,33 +691,12 @@ namespace MediaTracker
             LibraryPage.Instance.RefreshListDisplay();
             TrackThisBtn.IsEnabled = false;
         }
-
-        //generic button to test anything
-        private void testbtn_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AddCustomBtn_Clicked(object sender, EventArgs e)
-        {
-            JSONresponse.Text = "";
-            descriptionSummary.Text = "";
-            posterImage.Source = null;
-            availabilityLbl.Text = "";
-            countdownLbl.Text = "";
-            dateOfReleaseLbl.Text = "";
-            CustomStacklayout.IsVisible = true;
-            CustomTrackThisBtn.IsVisible = true;
-            TrackThisBtn.IsVisible = false;
-            SearchBtn.IsVisible = false;
-            titleEntry.IsVisible = false;
-            CustomTrackThisBtn.IsEnabled = true;
-            CreateStatusCheckStackLayout(AvailabilityStatusEnum.AVAILABLE_NOW, "film");
-
-        }
+        //Seperate track this button for custom entries
         private void CustomTrackThisBtn_Clicked(object sender, EventArgs e)
         {
+
             string selectedMediaType = GetSelectedMediaType();
+            
             JSONresponse.Text = "";
             if (customTitleEntry.Text != "" || customTitleEntry.Text != null)
             {
@@ -730,10 +709,17 @@ namespace MediaTracker
                             Plot = customDescriptionEntry.Text,
                             Type = "Movie",
                             Availability = AvailabilityStatusEnum.AVAILABLE_NOW,
+                            Released = datepicker.Date.ToString("dd MMM yyyy"),
+                            Year = datepicker.Date.Year.ToString(),
+                            UserStatus = GetSelectedUserStatus(),
+                            Date = DateTime.Today
                         };
+                        if (datepicker.Date > DateTime.Today)
+                        {
+                            NewMovie.Availability = AvailabilityStatusEnum.COMING_SOON;
+                        }
                         LibraryPage.Library.Add(NewMovie);
-                        CustomTrackThisBtn.IsEnabled = false;
-                        Debug.WriteLine("Created a custom movie: " + NewMovie.Title);
+                        //Debug.WriteLine("Created a custom movie: " + NewMovie.Title);
                         break;
                     case "TVShow":
                         TVShow NewTVShow = new TVShow
@@ -741,22 +727,40 @@ namespace MediaTracker
                             Title = customTitleEntry.Text,
                             Plot = customDescriptionEntry.Text,
                             Type = "TVShow",
-                            Availability = AvailabilityStatusEnum.AVAILABLE_NOW
+                            Availability = AvailabilityStatusEnum.AVAILABLE_NOW,
+                            Released = datepicker.Date.ToString("dd MMM yyyy"),
+                            UserStatus = GetSelectedUserStatus(),
+                            Date = DateTime.Today
                         };
+                        if (datepicker.Date > DateTime.Today)
+                        {
+                            NewTVShow.Availability = AvailabilityStatusEnum.COMING_SOON;
+                        }
                         LibraryPage.Library.Add(NewTVShow);
-                        CustomTrackThisBtn.IsEnabled = false;
 
                         break;
                     case "Book":
                         Book newBook = new Book
                         {
                             Title = customTitleEntry.Text,
+                            volumeInfo = new Volumeinfo
+                            {
+                                authors = new string[] { customAuthorEntry.Text },
+                                publishedDate = datepicker.Date.ToString("dd MMM yyyy"),
+                                title = customTitleEntry.Text
+                            },                            
                             Plot = customDescriptionEntry.Text,
                             Type = "Book",
-                            Availability = AvailabilityStatusEnum.AVAILABLE_NOW
+                            Availability = AvailabilityStatusEnum.AVAILABLE_NOW,
+                            UserStatus = GetSelectedUserStatus(),
+                            Date = DateTime.Today
                         };
+                        if (datepicker.Date > DateTime.Today)
+                        {
+                            newBook.Availability = AvailabilityStatusEnum.COMING_SOON;
+                            //newBook.DaysUntilRelease = (datepicker.Date - DateTime.Today).Days.ToString();
+                        }
                         LibraryPage.Library.Add(newBook);
-                        CustomTrackThisBtn.IsEnabled = false;
 
                         break;
                     default:
@@ -764,12 +768,49 @@ namespace MediaTracker
                         break;
                 }
             }
+            CustomTrackThisBtn.IsEnabled = false;
             LibraryPage.Instance.RefreshListDisplay();
         }
+        //Generic button to test anything
+        private void testbtn_Clicked(object sender, EventArgs e)
+        {
 
+        }
+        //If the user wants to add a custom entry
+        private void AddCustomBtn_Clicked(object sender, EventArgs e)
+        {
+            if (GetSelectedMediaType() != null)
+            {
+                if (GetSelectedMediaType() == "Book")
+                {
+                    customAuthorEntry.IsVisible = true;
+                }
+                else
+                {
+                    customAuthorEntry.IsVisible = false;
+                }
+                customDatePicker.IsVisible = true;
+                JSONresponse.Text = "";
+                descriptionSummary.Text = "";
+                posterImage.Source = null;
+                availabilityLbl.Text = "";
+                countdownLbl.Text = "";
+                dateOfReleaseLbl.Text = "";
+                CustomStacklayout.IsVisible = true;
+                CustomTrackThisBtn.IsVisible = true;
+                TrackThisBtn.IsVisible = false;
+                SearchBtn.IsVisible = false;
+                titleEntry.IsVisible = false;
+                CustomTrackThisBtn.IsEnabled = true;
+                CreateStatusCheckStackLayout(AvailabilityStatusEnum.AVAILABLE_NOW, "film");
+            }
+        }
+        //if the user wants to add an online entry
         private void SearchOnlineBtn_Clicked(object sender, EventArgs e)
         {
+            customDatePicker.IsVisible = false;
             CustomStacklayout.IsVisible = false;
+            customAuthorEntry.IsVisible = false;
             CustomTrackThisBtn.IsVisible = false;
             SearchBtn.IsVisible = true;
             titleEntry.IsVisible = true;
