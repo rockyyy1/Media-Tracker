@@ -2,6 +2,16 @@
 
 Store and manage your collection of books, TV shows, and movies in one place
 
+https://github.com/user-attachments/assets/8e918ca3-bbae-46e4-b63d-d9f83ae75855
+
+
+https://github.com/user-attachments/assets/c6638d9c-9d9b-4536-99db-ddc7e8f64e91
+
+
+https://github.com/user-attachments/assets/9213b69f-1922-406a-b0cf-b4e181e165f5
+
+
+
 ## Features
 
 - Search online using APIs for media details or create your own custom media.
