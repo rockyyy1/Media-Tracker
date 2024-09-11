@@ -33,3 +33,6 @@ https://github.com/user-attachments/assets/9213b69f-1922-406a-b0cf-b4e181e165f5
 - **Google Books API**  
   [https://developers.google.com/books](https://developers.google.com/books)  
   [https://developers.google.com/books/terms](https://developers.google.com/books/terms)
+  
+- **Flat Icons**  
+  https://www.flaticon.com/legal
