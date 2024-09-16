@@ -6,8 +6,8 @@ using System.Diagnostics.Metrics;
 using System.Globalization;
 using System.Reflection;
 using static System.Net.WebRequestMethods;
+using SQLite;
 
-// start date : 05/09/2024
 namespace MediaTracker
 {
     public partial class MainPage : ContentPage
@@ -588,6 +588,7 @@ namespace MediaTracker
                     if (!LibraryPage.Library.Any(m => m.Title == NewMovie.Title && m.Type == NewMovie.Type))
                     {
                         LibraryPage.Library.Add(NewMovie);
+                        LibraryPage.Instance.AddToDatabase(NewMovie);
                     }
                     break;
                 case "TVShow":
@@ -615,6 +616,7 @@ namespace MediaTracker
                     if (!LibraryPage.Library.Any(m => m.Title == newTVShow.Title && m.Type == newTVShow.Type))
                     {
                         LibraryPage.Library.Add(newTVShow);
+                        LibraryPage.Instance.AddToDatabase(newTVShow);
                     }
                     break;
                 case "Book":
@@ -682,6 +684,7 @@ namespace MediaTracker
                     if (!LibraryPage.Library.Any(m => m.Title == newBook.Title && m.Type == newBook.Type))
                     {
                         LibraryPage.Library.Add(newBook);
+                        LibraryPage.Instance.AddToDatabase(newBook);
                     }
                     break;
                 default:

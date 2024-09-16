@@ -2,6 +2,8 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Reflection;
+using SQLite;
+using Microsoft.Maui.Storage;
 
 
 
@@ -16,12 +18,25 @@ public partial class LibraryPage : ContentPage
     public List<Book> bookList { get; set; } = new List<Book>();
     public event EventHandler LibraryUpdated;
 
+    SQLiteAsyncConnection LibraryDatabase;
+    
+
+
     public LibraryPage()
     {
         InitializeComponent();
         Instance = this;
         Library = new List<MediaItem>();
-        LoadLibrary("userLibrary.json");
+
+        /*var localDataPath = FileSystem.Current.AppDataDirectory;
+        var filePath = Path.Combine(localDataPath, "database.sql");
+        LibraryDatabase = new SQLiteAsyncConnection(filePath);
+        LibraryDatabase.CreateTableAsync<MediaItem>();*/
+        //uses sql database for loading/saving
+        LoadDatabase();
+
+        //uses json for loading/saving
+        //LoadLibrary("userLibrary.json");
     }
 
     //Refresh Lists
@@ -34,7 +49,11 @@ public partial class LibraryPage : ContentPage
         TVShowList.ItemsSource = tvShowList;
         BookList.ItemsSource = bookList;
         LibraryUpdated?.Invoke(this, EventArgs.Empty);
-        SaveLibrary("userLibrary.json");
+        //json
+        //SaveLibrary("userLibrary.json");
+
+        //sql database
+        //SaveDatabase();
     }
     //Toggle List visibility
     private void ToggleMovieListVisibility(object sender, EventArgs e)
@@ -181,6 +200,30 @@ public partial class LibraryPage : ContentPage
         catch (Exception ex)
         {
             Debug.WriteLine("Error saving library: " + ex.Message);
+        }
+    }
+    public void LoadDatabase()
+    {
+        var localDataPath = FileSystem.Current.AppDataDirectory;
+        var filePath = Path.Combine(localDataPath, "database.sql");
+        Debug.WriteLine(filePath);
+        LibraryDatabase = new SQLiteAsyncConnection(filePath);
+
+        LibraryDatabase.CreateTableAsync<MediaItem>().Wait();
+        //LibraryDatabase.CreateTableAsync<Movie>().Wait();
+    }
+    public void SaveDatabase()
+    {
+        var localFolder = FileSystem.Current.AppDataDirectory;
+        var filePath = Path.Combine(localFolder, "database.sql");
+    }
+    public void AddToDatabase(MediaItem item)
+    {
+        LibraryDatabase.InsertAsync(item).Wait();
+        List<Movie> list = LibraryDatabase.Table<Movie>().ToListAsync().Result;
+        foreach (Movie i in list)
+        {
+            Debug.WriteLine("ID: " + i.ID + " Name: " + i.Title);
         }
     }
 }

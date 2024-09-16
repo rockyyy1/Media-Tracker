@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using SQLite;
 using System;
 using System.Globalization;
 using System.Text.Json.Serialization;
@@ -17,6 +18,8 @@ public enum AvailabilityStatusEnum
 }
 public class MediaItem
 {
+    [PrimaryKey, AutoIncrement] public int ID { get; set; }
+
     public string? Title { get; set; }
     public string? Plot { get; set; }
     public string? Type { get; set; }
